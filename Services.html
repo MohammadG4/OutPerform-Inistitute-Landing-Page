@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engagement Architecture — OutPerform Institute</title>
+  <meta name="description" content="Explore OutPerform Institute's Engagement Architecture: Sales System Audit, Embedded Fractional Sales Leadership, and Revenue Intelligence.">
+  <link rel="icon" href="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* MASTER EXECUTIVE LIGHT MODE DESIGN SYSTEM */
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-dark: #0F172A;
+      --text-primary: #0F172A;
+      --text-muted: #475569;
+      --text-subtle: #64748B;
+      --accent-lime: #32CD32;
+      --accent-lime-dark: #15803D;
+      --accent-lime-subtle: rgba(50, 205, 50, 0.1);
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --container-max: 1240px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 16px 32px -10px rgba(15, 23, 42, 0.1);
+      --transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      scroll-behavior: smooth; font-family: var(--font-main); background-color: var(--bg-light);
+      color: var(--text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; overflow-y: auto; width: 100%;
+    }
+    body { min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4, h5, h6 { color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
+    h1 { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
+    h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
+    h3 { font-size: clamp(1.15rem, 1.5vw, 1.35rem); }
+    p.lead { font-size: 1.05rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; }
+    .text-accent { color: var(--accent-lime-dark); }
+    
+    /* PLAIN SMALL-CAPS LABEL */
+    .caps-label {
+      font-size: 0.78rem; font-weight: 800; color: var(--accent-lime-dark);
+      text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px;
+    }
+
+    /* BUTTONS - COLOR-ONLY HOVER */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 22px; font-weight: 700; font-size: 0.92rem; border-radius: 6px;
+      cursor: pointer; transition: var(--transition); border: 1.5px solid transparent; white-space: nowrap;
+      position: relative; z-index: 2; pointer-events: auto; user-select: none;
+    }
+    .btn-primary {
+      background-color: var(--bg-white); color: var(--text-primary); border-color: var(--text-primary);
+    }
+    .btn-primary:hover {
+      background-color: var(--accent-lime); color: #000000; border-color: var(--accent-lime);
+    }
+    .btn-accent {
+      background-color: var(--accent-lime); color: #000000; border-color: var(--accent-lime);
+    }
+    .btn-accent:hover {
+      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
+    }
+    .btn-secondary {
+      background-color: var(--bg-subtle); color: var(--text-primary); border-color: var(--border-color);
+    }
+    .btn-secondary:hover {
+      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
+    }
+    .btn-block { width: 100%; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color); height: 72px; display: flex; align-items: center;
+    }
+    .navbar-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand-logo img { height: 34px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); padding: 4px 0; }
+    .nav-link:hover, .nav-link.active { color: var(--text-primary); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
+
+    /* HERO SECTION WITH SUBTLE ANIMATED BACKGROUND */
+    .hero {
+      padding: 36px 0 48px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-light) 100%);
+      position: relative; z-index: 1; overflow: hidden;
+    }
+    .hero-bg-animation {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.12; z-index: 0;
+      background-image: radial-gradient(var(--accent-lime) 1px, transparent 1px);
+      background-size: 24px 24px; animation: gridPulse 8s infinite alternate ease-in-out;
+    }
+    @keyframes gridPulse {
+      0% { opacity: 0.08; transform: scale(1); }
+      100% { opacity: 0.16; transform: scale(1.02); }
+    }
+    .hero-content { max-width: 780px; position: relative; z-index: 1; }
+    .hero-title { margin-bottom: 14px; }
+    .hero-subtitle { font-size: 1.02rem; color: var(--text-muted); margin-bottom: 24px; font-weight: 400; line-height: 1.55; }
+
+    /* SECTIONS */
+    .section { padding: 60px 0; border-bottom: 1px solid var(--border-color); position: relative; z-index: 1; }
+    .section-header { margin-bottom: 40px; max-width: 760px; }
+
+    /* VISUAL CARDS */
+    .card {
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 10px;
+      padding: 32px; transition: var(--transition); display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm); position: relative; z-index: 1;
+    }
+    .card:hover { border-color: var(--text-primary); box-shadow: var(--shadow-md); }
+    
+    .card-visual-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+    }
+    .card-icon-box {
+      width: 48px; height: 48px; background: var(--bg-subtle); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: var(--accent-lime-dark);
+      border: 1px solid var(--border-color);
+    }
+    .card-num-tag { font-size: 0.8rem; font-weight: 800; color: var(--accent-lime-dark); letter-spacing: 0.05em; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+
+    /* BOTTOM CTA BANNER */
+    .cta-banner {
+      background: var(--bg-white); border: 2px solid var(--text-primary); border-radius: 12px;
+      padding: 48px 32px; text-align: center; max-width: 920px; margin: 0 auto; box-shadow: var(--shadow-lg);
+    }
+    .cta-banner h2 { margin-bottom: 12px; }
+    .cta-banner p { color: var(--text-muted); font-size: 1.05rem; max-width: 660px; margin: 0 auto; }
+
+    /* FOOTER */
+    .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 56px 0 28px; margin-top: auto; position: relative; z-index: 1; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 36px; }
+    .footer-brand p { color: var(--text-muted); margin-top: 12px; font-size: 0.9rem; max-width: 340px; }
+    .footer-heading { font-size: 0.82rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-link { color: var(--text-muted); font-size: 0.9rem; }
+    .footer-link:hover { color: var(--text-primary); }
+    .footer-bottom { padding-top: 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.82rem; }
+
+    /* EXIT INTENT POPUP MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      z-index: 9999; display: none; opacity: 0; pointer-events: none; visibility: hidden;
+      align-items: center; justify-content: center; padding: 20px; transition: opacity 0.25s ease;
+    }
+    .modal-overlay.active { display: flex; opacity: 1; pointer-events: auto; visibility: visible; }
+    .modal-content {
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 12px;
+      width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto; position: relative;
+      box-shadow: var(--shadow-lg); padding: 28px;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px; background: var(--bg-subtle); border: none;
+      color: var(--text-primary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition);
+    }
+    .modal-close:hover { background: var(--text-primary); color: #FFF; }
+
+    @media (max-width: 992px) {
+      .nav-links, .nav-cta { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; width: 100%;
+        background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 24px; gap: 16px; box-shadow: var(--shadow-md);
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INLINE HEADER NAVIGATION -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="home.html" class="brand-logo" aria-label="OutPerform Institute Home">
+        <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo">
+      </a>
+      <nav>
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="home.html" class="nav-link">Home</a></li>
+          <li><a href="Services.html" class="nav-link active">Services</a></li>
+          <li><a href="About Us .html" class="nav-link">About Us</a></li>
+          <li><a href="Booking.html" class="nav-link">Booking</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.85rem;">Schedule Executive Briefing</button>
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION WITH SUBTLE ANIMATED BACKGROUND -->
+    <section class="hero">
+      <div class="hero-bg-animation"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="caps-label">Offer Architecture</span>
+          
+          <h1 class="hero-title">
+            The OutPerform Method: <span class="text-accent">Engagement Architecture</span>
+          </h1>
+          
+          <p class="hero-subtitle">
+            Performance doesn't scale without structure. We do not sell one-off advice or generic consulting. We deploy a three-phase operating path designed to transition your B2B sales team from founder-dependent oversight to an engineered revenue system.
+          </p>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button onclick="openBookingModal()" class="btn btn-accent">Book Executive Brief</button>
+            <a href="#audit" class="btn btn-primary">Explore The Path &darr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE OVERVIEW GRID WITH VISUAL CARDS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="caps-label">Structured Operating Path</span>
+          <h2>Three Phases to Predictable Revenue</h2>
+          <p class="lead">
+            Every engagement follows a disciplined progression. We audit root causes first, embed operational leadership to institute structure, and deploy automated system intelligence for ongoing execution.
+          </p>
+        </div>
+
+        <!-- PHASE 1: SALES SYSTEM AUDIT -->
+        <div id="audit" class="card" style="margin-bottom: 32px; border-left: 4px solid var(--accent-lime);">
+          <div class="card-visual-header">
+            <div class="card-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6M8 11h6"/></svg>
+            </div>
+            <span class="card-num-tag">PHASE 01 // DIAGNOSTIC STARTING POINT</span>
+          </div>
+
+          <h2 style="font-size: 1.85rem; margin-bottom: 12px;">Sales System Audit</h2>
+          <p class="card-desc" style="font-size: 1.02rem; max-width: 850px;">
+            A rigorous, evidence-based diagnostic of your current sales mechanics. Before changing team behaviors, we inspect your deal velocity, pipeline stage definitions, and forecast accuracy to pinpoint structural points of failure.
+          </p>
+
+          <div class="grid-2" style="margin: 20px 0;">
+            <div style="background: var(--bg-subtle); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.95rem; color: var(--accent-lime-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Audit Deliverables</h4>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; color: var(--text-muted); font-size: 0.92rem;">
+                <li>&bull; <strong>Revenue Leak Map:</strong> Quantitative breakdown of stalled deals and cycle delays.</li>
+                <li>&bull; <strong>Pipeline Stage Inspection:</strong> Verification of buyer actions versus rep assumptions.</li>
+                <li>&bull; <strong>Rep Activity Audit:</strong> Objective measurement of activity compliance and deal hygiene.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-subtle); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.95rem; color: var(--accent-lime-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Executive Outcome</h4>
+              <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">
+                You receive an objective diagnostic report identifying why sales performance is inconsistent, exactly where revenue is being lost, and the explicit structural blueprint required to fix it.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <button onclick="openBookingModal()" class="btn btn-accent">Schedule Audit Briefing &rarr;</button>
+          </div>
+        </div>
+
+        <!-- PHASE 2: FRACTIONAL SALES LEADERSHIP -->
+        <div id="fractional" class="card" style="margin-bottom: 32px; border-left: 4px solid var(--accent-lime);">
+          <div class="card-visual-header">
+            <div class="card-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="card-num-tag">PHASE 02 // EMBEDDED EXECUTION</span>
+          </div>
+
+          <h2 style="font-size: 1.85rem; margin-bottom: 12px;">Fractional Sales Leadership</h2>
+          <p class="card-desc" style="font-size: 1.02rem; max-width: 850px;">
+            Embedded operational leadership dedicated one day per week to your business. We step into the sales manager role, taking full accountability for rep discipline, pipeline inspection, and revenue execution.
+          </p>
+
+          <div class="grid-2" style="margin: 20px 0;">
+            <div style="background: var(--bg-subtle); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.95rem; color: var(--accent-lime-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Core Architecture</h4>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; color: var(--text-muted); font-size: 0.92rem;">
+                <li>&bull; <strong>1 Embedded Day / Week:</strong> Direct management cadence and deal inspection.</li>
+                <li>&bull; <strong>30-Day Revenue Control Brief:</strong> Immediate establishment of objective forecast rules.</li>
+                <li>&bull; <strong>90-Day Operating Plan:</strong> Complete VP of Sales ready documentation and playbook.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-subtle); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.95rem; color: var(--accent-lime-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Operating Guarantee</h4>
+              <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">
+                If the 30-Day Revenue Control Brief and weekly inspection cadence are not fully delivered, the next month of embedded leadership is provided at zero cost.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <button onclick="openBookingModal()" class="btn btn-accent">Book Executive Briefing &rarr;</button>
+          </div>
+        </div>
+
+        <!-- PHASE 3: OUTPERFORM REVENUE INTELLIGENCE -->
+        <div id="intelligence" class="card" style="border-left: 4px solid var(--accent-lime);">
+          <div class="card-visual-header">
+            <div class="card-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <span class="card-num-tag">PHASE 03 // CONTINUOUS SOFTWARE LAYER</span>
+          </div>
+
+          <h2 style="font-size: 1.85rem; margin-bottom: 12px;">OutPerform Revenue Intelligence</h2>
+          <p class="card-desc" style="font-size: 1.02rem; max-width: 850px;">
+            The permanent system layer left behind to safeguard process compliance. Integrates with your existing CRM to continuously monitor rep activity, detect process drift, and trigger automated leadership alerts before deals stall.
+          </p>
+
+          <div class="grid-2" style="margin: 20px 0;">
+            <div style="background: var(--bg-subtle); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.95rem; color: var(--accent-lime-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">System Capabilities</h4>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; color: var(--text-muted); font-size: 0.92rem;">
+                <li>&bull; <strong>CRM Integration:</strong> Automated tracking of deal velocity and stage gates.</li>
+                <li>&bull; <strong>Process Drift Alerts:</strong> Real-time notifications when rep behavior strays.</li>
+                <li>&bull; <strong>Objective Pipeline Scorecard:</strong> Data-backed forecast inspection panel.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-subtle); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.95rem; color: var(--accent-lime-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Long-Term Outcome</h4>
+              <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">
+                Your sales system maintains high execution standards indefinitely, preventing the company from slipping back into founder-dependent sales management.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <button onclick="openBookingModal()" class="btn btn-accent">Book Executive Briefing &rarr;</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SINGLE-ACTION BOTTOM CTA BANNER -->
+    <section class="section" style="border-bottom: none;">
+      <div class="container">
+        <div class="cta-banner">
+          <span class="caps-label">Executive Action</span>
+          <h2>Discuss Your Sales System Architecture</h2>
+          <p>
+            Schedule a 15-minute diagnostic call with Brian Taylor to evaluate your current sales structure and pinpoint points of revenue leak.
+          </p>
+          <div style="margin-top: 24px;">
+            <button onclick="openBookingModal()" class="btn btn-accent" style="font-size: 1rem; padding: 13px 32px;">Schedule Executive Briefing</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INLINE FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="home.html" class="brand-logo" style="margin-bottom: 16px; display: inline-block;">
+            <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 320px; line-height: 1.6;">
+            Fractional sales leadership for B2B tech and service founders scaling past $1M+ ARR without headcount waste.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="home.html" class="footer-link">Home</a></li>
+            <li><a href="Services.html" class="footer-link">Services</a></li>
+            <li><a href="About Us .html" class="footer-link">About Us</a></li>
+            <li><a href="Booking.html" class="footer-link">Booking</a></li>
+            <li><a href="Contact.html" class="footer-link">Contact Us</a></li>
+            <li><a href="/blog" class="footer-link">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Architecture</h4>
+          <ul class="footer-links">
+            <li><a href="Services.html#audit" class="footer-link">Sales System Audit</a></li>
+            <li><a href="Services.html#fractional" class="footer-link">Fractional Leadership</a></li>
+            <li><a href="Services.html#intelligence" class="footer-link">Revenue Intelligence</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Direct Contact</h4>
+          <ul class="footer-links">
+            <li class="footer-link">info@email.outperforminstitute.com</li>
+            <li class="footer-link">+1 314 228 8473</li>
+            <li style="margin-top: 10px;">
+              <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 16px; font-size: 0.82rem;">Book Executive Brief</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OutPerform Institute. All rights reserved.</div>
+        <div>Sales performance is a system problem, not a training problem.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EXIT INTENT POPUP MODAL -->
+  <div class="modal-overlay" id="exit-intent-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeBookingModal()" aria-label="Close modal">&times;</button>
+      <div style="margin-bottom: 16px;">
+        <span class="caps-label">Executive Briefing</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Schedule Your Sales System Audit</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem;">Select a time for a 15-minute diagnostic call on your sales operating structure.</p>
+      </div>
+      <div>
+        <iframe src="https://api.revenuelab360.com/widget/booking/7Q047XwldSbfTEI5mRJY" allow="payment" style="width: 100%; border:none; overflow: hidden; min-height: 500px;" scrolling="no" id="7Q047XwldSbfTEI5mRJY_modal"></iframe>
+        <script src="https://api.revenuelab360.com/js/form_embed.js" type="text/javascript"></script>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAD CONNECTOR SITE-WIDE CHAT WIDGET -->
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b86e7826d17f8cad31721e"></script>
+
+  <!-- INLINE INTERACTIVE JAVASCRIPT ENGINE -->
+  <script>
+    // GLOBAL MODAL CONTROLLERS
+    window.openBookingModal = function() {
+      const modal = document.getElementById("exit-intent-modal");
+      if (modal) {
+        modal.style.display = "flex";
+        setTimeout(() => {
+          modal.classList.add("active");
+          modal.setAttribute("aria-hidden", "false");
+        }, 10);
+      }
+    };
+
+    window.closeBookingModal = function() {
+      const modal = document.getElementById("exit-intent-modal");
+      if (modal) {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 200);
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("mobile-toggle-btn");
+      const navMenu = document.getElementById("nav-menu");
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          navMenu.classList.toggle("mobile-open");
+        });
+      }
+
+      // EXIT INTENT DETECTION
+      let exitTriggered = false;
+      document.addEventListener("mouseleave", function (e) {
+        if ((e.clientY <= 12 || e.clientY === undefined) && !exitTriggered) {
+          exitTriggered = true;
+          openBookingModal();
+        }
+      });
+
+      // MOBILE SCROLL EXIT TRIGGER
+      let scrollTriggered = false;
+      window.addEventListener("scroll", function () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (docHeight > 0 && scrollTop / docHeight > 0.7 && !scrollTriggered && window.innerWidth <= 768) {
+          scrollTriggered = true;
+          openBookingModal();
+        }
+      });
+
+      // MODAL BACKGROUND CLICK TO CLOSE
+      document.addEventListener("click", function (e) {
+        const modal = document.getElementById("exit-intent-modal");
+        if (e.target === modal) {
+          closeBookingModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

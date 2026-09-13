@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Executive Briefing — OutPerform Institute</title>
+  <meta name="description" content="Schedule a 15-minute Executive Briefing with OutPerform Institute to review your sales operating structure and determine if a Sales System Audit is right for your company.">
+  <link rel="icon" href="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* MASTER EXECUTIVE LIGHT MODE DESIGN SYSTEM */
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-dark: #0F172A;
+      --text-primary: #0F172A;
+      --text-muted: #475569;
+      --text-subtle: #64748B;
+      --accent-lime: #32CD32;
+      --accent-lime-dark: #15803D;
+      --accent-lime-subtle: rgba(50, 205, 50, 0.1);
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --container-max: 1240px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 16px 32px -10px rgba(15, 23, 42, 0.1);
+      --transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      scroll-behavior: smooth; font-family: var(--font-main); background-color: var(--bg-light);
+      color: var(--text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; overflow-y: auto; width: 100%;
+    }
+    body { min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4, h5, h6 { color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
+    h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
+    
+    /* PLAIN SMALL-CAPS LABEL */
+    .caps-label {
+      font-size: 0.78rem; font-weight: 800; color: var(--accent-lime-dark);
+      text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px;
+    }
+
+    /* BUTTONS - COLOR-ONLY HOVER */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 22px; font-weight: 700; font-size: 0.92rem; border-radius: 6px;
+      cursor: pointer; transition: var(--transition); border: 1.5px solid transparent; white-space: nowrap;
+      position: relative; z-index: 2; pointer-events: auto; user-select: none;
+    }
+    .btn-accent {
+      background-color: var(--accent-lime); color: #000000; border-color: var(--accent-lime);
+    }
+    .btn-accent:hover {
+      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color); height: 72px; display: flex; align-items: center;
+    }
+    .navbar-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand-logo img { height: 34px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); padding: 4px 0; }
+    .nav-link:hover, .nav-link.active { color: var(--text-primary); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
+
+    /* BOOKING CONTAINER */
+    .section { padding: 48px 0; position: relative; z-index: 1; }
+    .hero-bg-animation {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.12; z-index: 0;
+      background-image: radial-gradient(var(--accent-lime) 1px, transparent 1px);
+      background-size: 24px 24px; animation: gridPulse 8s infinite alternate ease-in-out;
+    }
+    @keyframes gridPulse {
+      0% { opacity: 0.08; transform: scale(1); }
+      100% { opacity: 0.16; transform: scale(1.02); }
+    }
+
+    .booking-card {
+      background: var(--bg-white); border: 2px solid var(--text-primary); border-radius: 12px;
+      padding: 24px; box-shadow: var(--shadow-lg); margin-top: 20px; min-height: 680px; position: relative; z-index: 1;
+    }
+
+    /* FOOTER */
+    .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 56px 0 28px; margin-top: auto; position: relative; z-index: 1; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 36px; }
+    .footer-brand p { color: var(--text-muted); margin-top: 12px; font-size: 0.9rem; max-width: 340px; }
+    .footer-heading { font-size: 0.82rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-link { color: var(--text-muted); font-size: 0.9rem; }
+    .footer-link:hover { color: var(--text-primary); }
+    .footer-bottom { padding-top: 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.82rem; }
+
+    /* EXIT INTENT POPUP MODAL - HIDDEN WHEN INACTIVE */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      z-index: 9999; display: none; opacity: 0; pointer-events: none; visibility: hidden;
+      align-items: center; justify-content: center; padding: 20px; transition: opacity 0.25s ease;
+    }
+    .modal-overlay.active { display: flex; opacity: 1; pointer-events: auto; visibility: visible; }
+    .modal-content {
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 12px;
+      width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto; position: relative;
+      box-shadow: var(--shadow-lg); padding: 28px;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px; background: var(--bg-subtle); border: none;
+      color: var(--text-primary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition);
+    }
+    .modal-close:hover { background: var(--text-primary); color: #FFF; }
+
+    @media (max-width: 992px) {
+      .nav-links, .nav-cta { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; width: 100%;
+        background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 24px; gap: 16px; box-shadow: var(--shadow-md);
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INLINE HEADER NAVIGATION -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="home.html" class="brand-logo" aria-label="OutPerform Institute Home">
+        <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo">
+      </a>
+      <nav>
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="home.html" class="nav-link">Home</a></li>
+          <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="About Us .html" class="nav-link">About Us</a></li>
+          <li><a href="Booking.html" class="nav-link active">Booking</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.85rem;">Schedule Executive Briefing</button>
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="position: relative; overflow: hidden;">
+    <div class="hero-bg-animation"></div>
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 20px;">
+          <span class="caps-label">Executive Calendar</span>
+          <h2>Schedule Your 15-Minute Executive Briefing</h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem; margin-top: 8px;">
+            Select a date and time below to meet directly with Brian Taylor. We will review your current sales team size, deal velocity, and operating bottlenecks.
+          </p>
+        </div>
+
+        <div class="booking-card">
+          <!-- REQUIRED REVENUE LAB 360 BOOKING WIDGET -->
+          <iframe src="https://api.revenuelab360.com/widget/booking/7Q047XwldSbfTEI5mRJY" allow="payment" style="width: 100%; border:none; overflow: hidden; min-height: 640px;" scrolling="no" id="7Q047XwldSbfTEI5mRJY_booking_page"></iframe>
+          <script src="https://api.revenuelab360.com/js/form_embed.js" type="text/javascript"></script>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INLINE FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="home.html" class="brand-logo" style="margin-bottom: 16px; display: inline-block;">
+            <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 320px; line-height: 1.6;">
+            Fractional sales leadership for B2B tech and service founders scaling past $1M+ ARR without headcount waste.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="home.html" class="footer-link">Home</a></li>
+            <li><a href="Services.html" class="footer-link">Services</a></li>
+            <li><a href="About Us .html" class="footer-link">About Us</a></li>
+            <li><a href="Booking.html" class="footer-link">Booking</a></li>
+            <li><a href="Contact.html" class="footer-link">Contact Us</a></li>
+            <li><a href="/blog" class="footer-link">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Architecture</h4>
+          <ul class="footer-links">
+            <li><a href="Services.html#audit" class="footer-link">Sales System Audit</a></li>
+            <li><a href="Services.html#fractional" class="footer-link">Fractional Leadership</a></li>
+            <li><a href="Services.html#intelligence" class="footer-link">Revenue Intelligence</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Direct Contact</h4>
+          <ul class="footer-links">
+            <li class="footer-link">info@email.outperforminstitute.com</li>
+            <li class="footer-link">+1 314 228 8473</li>
+            <li style="margin-top: 10px;">
+              <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 16px; font-size: 0.82rem;">Book Executive Brief</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OutPerform Institute. All rights reserved.</div>
+        <div>Sales performance is a system problem, not a training problem.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EXIT INTENT POPUP MODAL -->
+  <div class="modal-overlay" id="exit-intent-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeBookingModal()" aria-label="Close modal">&times;</button>
+      <div style="margin-bottom: 16px;">
+        <span class="caps-label">Executive Briefing</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Schedule Your Sales System Audit</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem;">Select a time for a 15-minute diagnostic call on your sales operating structure.</p>
+      </div>
+      <div>
+        <iframe src="https://api.revenuelab360.com/widget/booking/7Q047XwldSbfTEI5mRJY" allow="payment" style="width: 100%; border:none; overflow: hidden; min-height: 500px;" scrolling="no" id="7Q047XwldSbfTEI5mRJY_modal"></iframe>
+        <script src="https://api.revenuelab360.com/js/form_embed.js" type="text/javascript"></script>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAD CONNECTOR SITE-WIDE CHAT WIDGET -->
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b86e7826d17f8cad31721e"></script>
+
+  <!-- INLINE INTERACTIVE JAVASCRIPT ENGINE -->
+  <script>
+    // GLOBAL MODAL CONTROLLERS
+    window.openBookingModal = function() {
+      const modal = document.getElementById("exit-intent-modal");
+      if (modal) {
+        modal.style.display = "flex";
+        setTimeout(() => {
+          modal.classList.add("active");
+          modal.setAttribute("aria-hidden", "false");
+        }, 10);
+      }
+    };
+
+    window.closeBookingModal = function() {
+      const modal = document.getElementById("exit-intent-modal");
+      if (modal) {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 200);
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("mobile-toggle-btn");
+      const navMenu = document.getElementById("nav-menu");
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          navMenu.classList.toggle("mobile-open");
+        });
+      }
+
+      // EXIT INTENT DETECTION
+      let exitTriggered = false;
+      document.addEventListener("mouseleave", function (e) {
+        if ((e.clientY <= 12 || e.clientY === undefined) && !exitTriggered) {
+          exitTriggered = true;
+          openBookingModal();
+        }
+      });
+
+      // MOBILE SCROLL EXIT TRIGGER
+      let scrollTriggered = false;
+      window.addEventListener("scroll", function () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (docHeight > 0 && scrollTop / docHeight > 0.7 && !scrollTriggered && window.innerWidth <= 768) {
+          scrollTriggered = true;
+          openBookingModal();
+        }
+      });
+
+      // MODAL BACKGROUND CLICK TO CLOSE
+      document.addEventListener("click", function (e) {
+        const modal = document.getElementById("exit-intent-modal");
+        if (e.target === modal) {
+          closeBookingModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
