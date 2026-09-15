@@ -3,214 +3,409 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Brian Taylor & OutPerform Institute</title>
+  <title>About Brian Taylor &amp; OutPerform Institute</title>
   <meta name="description" content="Learn about Brian Taylor, 30-year enterprise sales veteran, former CEO, and founder of OutPerform Institute. Embedded fractional sales leadership for B2B SaaS and IT founders.">
   <link rel="icon" href="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
 
   <style>
-    /* MASTER EXECUTIVE LIGHT MODE DESIGN SYSTEM */
+    /* ================= DESIGN SYSTEM (identical to home) ================= */
     :root {
       --bg-light: #F8FAFC;
       --bg-white: #FFFFFF;
-      --bg-card: #FFFFFF;
       --bg-subtle: #F1F5F9;
       --border-color: #E2E8F0;
-      --border-dark: #0F172A;
       --text-primary: #0F172A;
       --text-muted: #475569;
       --text-subtle: #64748B;
-      --accent-lime: #32CD32;
-      --accent-lime-dark: #15803D;
-      --accent-lime-subtle: rgba(50, 205, 50, 0.1);
+      --green-text: rgb(59, 126, 68);
+      --green-btn: rgb(103, 202, 77);
+      --green-btn-hover: rgb(84, 176, 58);
       --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --container-max: 1240px;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 16px 32px -10px rgba(15, 23, 42, 0.1);
-      --transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      --container-max: 1200px;
+      --text-max-width: 62ch;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.2s ease-in-out;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; scrollbar-color: var(--green-btn) var(--bg-subtle); }
     html, body {
-      scroll-behavior: smooth; font-family: var(--font-main); background-color: var(--bg-light);
-      color: var(--text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; overflow-y: auto; width: 100%;
+      font-family: var(--font-main); background-color: var(--bg-light);
+      color: var(--text-primary); line-height: 1.65; -webkit-font-smoothing: antialiased;
+      overflow-x: clip; width: 100%;
     }
-    body { min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+    @supports not (overflow: clip) { html, body { overflow-x: hidden; } }
+    body { min-height: 100vh; display: flex; flex-direction: column; }
     a { color: inherit; text-decoration: none; transition: var(--transition); }
     img { max-width: 100%; height: auto; display: block; }
     .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+    ::selection { background: rgba(103, 202, 77, 0.28); }
+    .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green-text); outline-offset: 3px; border-radius: 6px; }
 
-    /* TYPOGRAPHY */
-    h1, h2, h3, h4, h5, h6 { color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
-    h1 { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
-    h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: var(--bg-subtle); }
+    ::-webkit-scrollbar-thumb { background: var(--green-btn); border-radius: 10px; border: 3px solid var(--bg-subtle); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--green-text); }
+
+    /* ================= TYPOGRAPHY ================= */
+    h1, h2, h3, h4 { color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em; line-height: 1.18; }
+    h1 { font-size: clamp(2.4rem, 3.6vw, 3.1rem); }
+    h2 { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }
     h3 { font-size: clamp(1.15rem, 1.5vw, 1.35rem); }
-    p.lead { font-size: 1.05rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; }
-    .text-accent { color: var(--accent-lime-dark); }
-    
-    /* PLAIN SMALL-CAPS LABEL */
+    p { max-width: var(--text-max-width); }
+    p.lead { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; }
+    .text-accent { color: var(--green-text); }
+
     .caps-label {
-      font-size: 0.78rem; font-weight: 800; color: var(--accent-lime-dark);
-      text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px;
+      font-size: 0.76rem; font-weight: 800; color: var(--green-text);
+      text-transform: uppercase; letter-spacing: 0.09em; display: inline-block; margin-bottom: 14px;
+      background: rgba(59, 126, 68, 0.07); padding: 4px 12px; border-radius: 4px;
+      border: 1px solid rgba(59, 126, 68, 0.22);
     }
 
-    /* BUTTONS - COLOR-ONLY HOVER */
+    /* ================= BUTTONS ================= */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 11px 22px; font-weight: 700; font-size: 0.92rem; border-radius: 6px;
-      cursor: pointer; transition: var(--transition); border: 1.5px solid transparent; white-space: nowrap;
-      position: relative; z-index: 2; pointer-events: auto; user-select: none;
+      padding: 13px 26px; font-weight: 700; font-size: 0.95rem; border-radius: 8px;
+      cursor: pointer; transition: var(--transition); border: 1.5px solid transparent;
+      white-space: nowrap; user-select: none;
     }
-    .btn-primary {
-      background-color: var(--bg-white); color: var(--text-primary); border-color: var(--text-primary);
-    }
-    .btn-primary:hover {
-      background-color: var(--accent-lime); color: #000000; border-color: var(--accent-lime);
-    }
-    .btn-accent {
-      background-color: var(--accent-lime); color: #000000; border-color: var(--accent-lime);
-    }
-    .btn-accent:hover {
-      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
-    }
-    .btn-secondary {
-      background-color: var(--bg-subtle); color: var(--text-primary); border-color: var(--border-color);
-    }
-    .btn-secondary:hover {
-      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
-    }
-    .btn-block { width: 100%; }
+    .btn-primary { background-color: var(--text-primary); color: #FFF; border-color: var(--text-primary); box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background-color: #1E293B; border-color: #1E293B; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-accent { background-color: var(--green-btn); color: #FFF; border-color: var(--green-btn); box-shadow: 0 4px 14px rgba(103, 202, 77, 0.35); }
+    .btn-accent:hover { background-color: var(--green-btn-hover); border-color: var(--green-btn-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(103, 202, 77, 0.45); }
+    .btn-secondary { background-color: var(--bg-white); color: var(--text-primary); border-color: var(--border-color); box-shadow: var(--shadow-sm); }
+    .btn-secondary:hover { background-color: var(--bg-subtle); border-color: var(--text-primary); }
 
-    /* NAVBAR */
+    /* ================= SCROLL PROGRESS ================= */
+    .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 2000; pointer-events: none; }
+    .scroll-progress span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--green-btn), var(--green-text)); }
+
+    /* ================= NAVBAR ================= */
     .navbar {
-      position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border-color); height: 72px; display: flex; align-items: center;
+      position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color); height: 74px; display: flex; align-items: center;
+      transition: box-shadow 0.3s ease;
     }
+    .navbar.scrolled { box-shadow: 0 6px 24px -12px rgba(15, 23, 42, 0.18); }
     .navbar-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
     .brand-logo img { height: 34px; width: auto; }
-    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-    .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); padding: 4px 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-link { font-size: 0.92rem; font-weight: 600; color: var(--text-muted); padding: 4px 0; position: relative; }
+    .nav-link::after {
+      content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%;
+      background: var(--green-btn); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+    }
     .nav-link:hover, .nav-link.active { color: var(--text-primary); }
-    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); cursor: pointer; }
 
-    /* HERO SECTION WITH SUBTLE ANIMATED BACKGROUND */
+    /* ================= HERO ================= */
     .hero {
-      padding: 36px 0 48px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-light) 100%);
-      position: relative; z-index: 1; overflow: hidden;
+      padding: 88px 0 96px;
+      background: radial-gradient(circle at 80% 20%, #F1F5F9 0%, #F8FAFC 70%);
+      position: relative; overflow: hidden;
     }
-    .hero-bg-animation {
-      position: absolute; inset: 0; pointer-events: none; opacity: 0.12; z-index: 0;
-      background-image: radial-gradient(var(--accent-lime) 1px, transparent 1px);
-      background-size: 24px 24px; animation: gridPulse 8s infinite alternate ease-in-out;
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; width: 100%; }
+    .hero-content { max-width: 580px; }
+    .hero-title { margin-bottom: 20px; }
+    .hero-subtitle { font-size: 1.06rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.65; max-width: 56ch; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+    .hero-trust-bar {
+      display: flex; flex-wrap: wrap; gap: 16px 24px; padding-top: 22px;
+      border-top: 1px solid var(--border-color); color: var(--text-subtle); font-size: 0.86rem; font-weight: 600;
     }
-    @keyframes gridPulse {
-      0% { opacity: 0.08; transform: scale(1); }
-      100% { opacity: 0.16; transform: scale(1.02); }
+    .trust-item { display: flex; align-items: center; gap: 8px; }
+    .trust-item svg { color: var(--green-text); flex-shrink: 0; }
+
+    /* ============================================================
+       3D OPERATOR DOSSIER (hero right) — same engine + safeguards
+       as home's dashboard:
+       • .dossier-scroll → GSAP scroll rotation only
+       • .dossier-float  → CSS bob only
+       • .dossier-3d     → GSAP cursor tilt only (quickTo)
+       • Z-depths live in CSS on leaf children (never tweened)
+       • wrapper fades as ONE block (no per-layer opacity)
+       ============================================================ */
+    .hero-visual { position: relative; perspective: 1600px; perspective-origin: 50% 40%; }
+    .hero-visual::before {
+      content: ""; position: absolute; inset: -14% -16%;
+      background: radial-gradient(closest-side, rgba(103, 202, 77, 0.12), rgba(103, 202, 77, 0) 72%);
+      transform: translateZ(-160px); pointer-events: none;
     }
-    .hero-content { max-width: 780px; position: relative; z-index: 1; }
-    .hero-title { margin-bottom: 14px; }
-    .hero-subtitle { font-size: 1.02rem; color: var(--text-muted); margin-bottom: 24px; font-weight: 400; line-height: 1.55; }
+    .dossier-scroll { transform-style: preserve-3d; will-change: transform; transform: rotateX(6deg) rotateY(-9deg); }
+    .dossier-float { transform-style: preserve-3d; animation: dossierBob 8s ease-in-out infinite alternate; }
+    @keyframes dossierBob { from { transform: translateY(-6px); } to { transform: translateY(7px); } }
 
-    /* SECTIONS & CARDS */
-    .section { padding: 60px 0; border-bottom: 1px solid var(--border-color); position: relative; z-index: 1; }
-    .section-header { margin-bottom: 40px; max-width: 760px; }
+    .dossier-3d {
+      position: relative; transform-style: preserve-3d; will-change: transform;
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
+      box-shadow: 0 30px 70px -20px rgba(15, 23, 42, 0.22), 0 12px 28px -14px rgba(15, 23, 42, 0.12);
+    }
+    .dossier-header {
+      transform: translateZ(16px);
+      background: var(--bg-subtle); padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-color); border-radius: 15px 15px 0 0;
+    }
+    .dossier-dots { display: flex; gap: 6px; align-items: center; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background-color: #CBD5E1; }
+    @keyframes livePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(103, 202, 77, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(103, 202, 77, 0); } }
+    .dot.dot-emerald { background-color: var(--green-btn); animation: livePulse 2.2s infinite; }
+    .dossier-title-tag { font-size: 0.72rem; font-weight: 800; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.06em; }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; }
+    .dossier-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; transform-style: preserve-3d; }
 
+    .dossier-id { display: flex; align-items: center; gap: 16px; transform: translateZ(30px); }
+    .dossier-avatar {
+      width: 58px; height: 58px; border-radius: 14px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); border: 1px solid rgba(103, 202, 77, 0.35);
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
+      font-weight: 900; font-size: 1.2rem; letter-spacing: -0.02em;
+    }
+    .dossier-id strong { display: block; font-size: 1.15rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; }
+    .dossier-id small { display: block; font-size: 0.8rem; color: var(--text-subtle); font-weight: 600; }
+    .dossier-id em { display: block; font-style: normal; font-size: 0.72rem; color: var(--green-text); font-weight: 800; margin-top: 2px; }
+
+    .dossier-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; transform-style: preserve-3d; }
+    .dossier-metric { background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; transform: translateZ(36px); }
+    .dossier-metric-lbl { font-size: 0.72rem; color: var(--text-subtle); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.04em; }
+    .dossier-metric-val { font-size: 1.55rem; font-weight: 900; color: var(--text-primary); line-height: 1.1; }
+    .dossier-metric-sub { font-size: 0.74rem; color: var(--green-text); font-weight: 700; margin-top: 6px; }
+
+    .dossier-quote {
+      transform: translateZ(20px);
+      background: var(--bg-light); border: 1px solid var(--border-color); border-left: 3px solid var(--green-btn);
+      border-radius: 10px; padding: 14px 18px;
+      font-size: 0.9rem; font-weight: 600; color: var(--text-muted); line-height: 1.55;
+    }
+    .dossier-quote span { color: var(--green-text); font-weight: 800; }
+
+    .float-chip { position: absolute; transform: translateZ(78px); pointer-events: none; }
+    .chip-a { top: -26px; right: -16px; }
+    .chip-b { bottom: -26px; left: -24px; transform: translateZ(92px); }
+    .chip-inner {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
+      box-shadow: 0 14px 30px -12px rgba(15, 23, 42, 0.18);
+      padding: 10px 14px; display: flex; align-items: center; gap: 10px;
+      animation: chipBob 5.5s ease-in-out infinite alternate;
+    }
+    .chip-b .chip-inner { animation-duration: 6.5s; animation-delay: -2.4s; }
+    @keyframes chipBob { from { transform: translateY(-4px); } to { transform: translateY(5px); } }
+    .chip-icon {
+      width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); border: 1px solid rgba(103, 202, 77, 0.35);
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
+    }
+    .chip-text strong { display: block; font-size: 0.82rem; font-weight: 800; color: var(--text-primary); line-height: 1.3; }
+    .chip-text small { display: block; font-size: 0.72rem; color: var(--text-subtle); font-weight: 600; }
+
+    /* ================= SECTIONS ================= */
+    .section { padding: 104px 0; position: relative; }
+    .section-white { background: var(--bg-white); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .section-header { margin-bottom: 52px; max-width: 660px; }
+    .section-header h2 { margin-bottom: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+
+    /* ================= GLARE ================= */
+    .glare { position: relative; }
+    .glare::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+      background: radial-gradient(480px circle at var(--gx, 50%) var(--gy, 50%), rgba(103, 202, 77, 0.14), rgba(103, 202, 77, 0.03) 45%, transparent 65%);
+      opacity: var(--go, 0); transition: opacity 0.4s ease;
+    }
+
+    /* ================= FOUNDER + PHILOSOPHY ================= */
+    .founder-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+    .founder-card {
+      position: relative;
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 36px; box-shadow: var(--shadow-md); will-change: transform;
+      transform-style: preserve-3d;
+      transition: border-color 0.2s ease, box-shadow 0.3s ease; /* colors only — JS owns transform */
+    }
+    .founder-card:hover { border-color: var(--text-primary); }
+    .founder-card > *:not(.founder-ghost) { position: relative; z-index: 2; }
+    .founder-ghost {
+      position: absolute; top: 4px; right: 24px; line-height: 1;
+      font-size: clamp(90px, 10vw, 150px); font-weight: 900; letter-spacing: -0.05em;
+      color: rgba(15, 23, 42, 0.05);
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .founder-title { color: var(--green-text); font-weight: 800; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+    .founder-name { font-size: 2rem; margin-bottom: 14px; }
+    .founder-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+    .stat-num { font-size: 1.7rem; font-weight: 900; color: var(--green-text); }
+    .stat-lbl { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; }
+
+    .philosophy-quote {
+      font-size: clamp(1.4rem, 2vw, 1.7rem); line-height: 1.35; margin-bottom: 18px;
+      padding-left: 18px; border-left: 3px solid var(--green-btn);
+    }
+    .founder-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+
+    /* ================= PRINCIPLE CARDS (home root-cause DNA) ================= */
     .card {
-      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 10px;
-      padding: 28px; transition: var(--transition); display: flex; flex-direction: column;
-      box-shadow: var(--shadow-sm); position: relative; z-index: 1;
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 14px;
+      padding: 32px; display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm); will-change: transform;
+      transform-style: preserve-3d;
+      transition: border-color 0.2s ease, box-shadow 0.3s ease;
     }
     .card:hover { border-color: var(--text-primary); box-shadow: var(--shadow-md); }
-    
-    .card-visual-header {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
-    }
+    .card-visual-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
     .card-icon-box {
-      width: 44px; height: 44px; background: var(--bg-subtle); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; color: var(--accent-lime-dark);
+      width: 46px; height: 46px; background: var(--bg-subtle); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
       border: 1px solid var(--border-color);
+      transform: translateZ(44px); transition: transform 0.35s var(--ease-out);
     }
-    .card-num-tag { font-size: 0.8rem; font-weight: 800; color: var(--accent-lime-dark); letter-spacing: 0.05em; }
+    .card:hover .card-icon-box { transform: translateZ(56px) scale(1.06); }
+    .card-num {
+      width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); color: var(--green-text);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.85rem; letter-spacing: 0.02em;
+    }
+    .card-title { margin-bottom: 10px; font-size: 1.2rem; font-weight: 800; }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 22px; max-width: none; }
 
-    .card-title { margin-bottom: 12px; font-size: 1.25rem; }
-    .card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
-
-    .founder-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: center; }
-    .founder-card { background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 10px; padding: 32px; box-shadow: var(--shadow-md); }
-    .founder-title { color: var(--accent-lime-dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 4px; }
-    .founder-name { font-size: 1.85rem; margin-bottom: 12px; }
-    .founder-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-color); }
-    .stat-num { font-size: 1.6rem; font-weight: 900; color: var(--accent-lime-dark); }
-    .stat-lbl { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
-
-    /* BOTTOM CTA BANNER */
+    /* ================= CTA BANNER ================= */
     .cta-banner {
-      background: var(--bg-white); border: 2px solid var(--text-primary); border-radius: 12px;
-      padding: 48px 32px; text-align: center; max-width: 920px; margin: 0 auto; box-shadow: var(--shadow-lg);
+      background: var(--bg-white); border: 2px solid var(--text-primary); border-radius: 18px;
+      padding: 56px 40px; text-align: center; max-width: 820px; margin: 0 auto; box-shadow: var(--shadow-lg);
+      will-change: transform; transform-style: preserve-3d;
+      transition: border-color 0.2s ease, box-shadow 0.3s ease;
     }
-    .cta-banner h2 { margin-bottom: 12px; }
-    .cta-banner p { color: var(--text-muted); font-size: 1.05rem; max-width: 660px; margin: 0 auto; }
+    .cta-banner h2 { margin-bottom: 14px; }
+    .cta-banner p { color: var(--text-muted); font-size: 1.05rem; max-width: 540px; margin: 0 auto 30px; }
 
-    /* FOOTER */
-    .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 56px 0 28px; margin-top: auto; position: relative; z-index: 1; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 36px; }
-    .footer-brand p { color: var(--text-muted); margin-top: 12px; font-size: 0.9rem; max-width: 340px; }
-    .footer-heading { font-size: 0.82rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-link { color: var(--text-muted); font-size: 0.9rem; }
+    /* ================= FLOATING CTA ================= */
+    .floating-cta {
+      position: fixed; left: 22px; bottom: 22px; z-index: 1500;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--green-btn); color: #FFF; border: none; cursor: pointer;
+      font-family: var(--font-main); font-weight: 800; font-size: 0.9rem;
+      padding: 12px 22px; border-radius: 999px;
+      box-shadow: 0 10px 26px -8px rgba(103, 202, 77, 0.55);
+      transform: translateY(96px); opacity: 0;
+      transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out), background-color 0.2s ease;
+    }
+    .floating-cta.show { transform: none; opacity: 1; }
+    .floating-cta:hover { background: var(--green-btn-hover); }
+    .floating-cta svg { flex-shrink: 0; }
+
+    /* ================= FOOTER ================= */
+    .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 64px 0 32px; margin-top: auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { color: var(--text-muted); margin-top: 14px; font-size: 0.92rem; max-width: 340px; }
+    .footer-heading { font-size: 0.8rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-link { color: var(--text-muted); font-size: 0.92rem; }
     .footer-link:hover { color: var(--text-primary); }
-    .footer-bottom { padding-top: 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.82rem; }
+    .footer-bottom { padding-top: 28px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.84rem; }
 
-    /* EXIT INTENT POPUP MODAL */
+    /* ================= MODAL ================= */
     .modal-overlay {
-      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       z-index: 9999; display: none; opacity: 0; pointer-events: none; visibility: hidden;
       align-items: center; justify-content: center; padding: 20px; transition: opacity 0.25s ease;
     }
     .modal-overlay.active { display: flex; opacity: 1; pointer-events: auto; visibility: visible; }
     .modal-content {
-      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 12px;
-      width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto; position: relative;
-      box-shadow: var(--shadow-lg); padding: 28px;
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 14px;
+      width: 100%; max-width: 740px; max-height: 90vh; overflow-y: auto; position: relative;
+      box-shadow: var(--shadow-lg); padding: 32px;
     }
     .modal-close {
-      position: absolute; top: 16px; right: 16px; background: var(--bg-subtle); border: none;
-      color: var(--text-primary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition);
+      position: absolute; top: 18px; right: 18px; background: var(--bg-subtle); border: none;
+      color: var(--text-primary); width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: var(--transition);
     }
     .modal-close:hover { background: var(--text-primary); color: #FFF; }
 
+    /* ================= REVEALS ================= */
+    html.js:not(.gsap-anim) .reveal {
+      opacity: 0; translate: 0 34px;
+      transition: opacity 0.7s var(--ease-out), translate 0.7s var(--ease-out);
+    }
+    html.js:not(.gsap-anim) .reveal.in-view { opacity: 1; translate: none; }
+    .gsap-anim .reveal { opacity: 0; transition: none; translate: none; }
+
+    @keyframes heroRise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes visualIn { from { opacity: 0; transform: translateY(36px) scale(0.97); } to { opacity: 1; transform: none; } }
+    html.js:not(.gsap-anim) .hero-content > * { animation: heroRise 0.7s var(--ease-out) both; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(2) { animation-delay: 0.07s; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(3) { animation-delay: 0.14s; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(4) { animation-delay: 0.21s; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(5) { animation-delay: 0.28s; }
+    html.js:not(.gsap-anim) .hero-visual { animation: visualIn 0.9s 0.25s var(--ease-out) both; }
+
+    /* FOUC guard — GSAP reveals via fromTo with an explicit end state */
+    html.js .hero-visual { opacity: 0; }
+
+    /* ================= REDUCED MOTION ================= */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; translate: none !important; transition: none !important; }
+      .hero-content > *, .hero-visual { animation: none !important; }
+      html.js .hero-visual { opacity: 1 !important; }
+      .dossier-scroll { transform: none; }
+      .dossier-float, .chip-inner, .dot.dot-emerald { animation: none !important; }
+      .card-icon-box, .card:hover .card-icon-box { transform: none; }
+    }
+
+    /* ================= RESPONSIVE ================= */
     @media (max-width: 992px) {
+      .hero { padding: 56px 0 64px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+      .hero-visual { margin: 0 8px; }
+      .chip-a { right: 4px; top: -22px; }
+      .chip-b { left: 4px; }
       .nav-links, .nav-cta { display: none; }
       .mobile-toggle { display: block; }
       .nav-links.mobile-open {
-        display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; width: 100%;
+        display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; width: 100%;
         background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 24px; gap: 16px; box-shadow: var(--shadow-md);
       }
       .founder-layout { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 800px) {
+      .section { padding: 80px 0; }
+      .founder-card { padding: 28px; }
+      .founder-ghost { font-size: 90px; right: 14px; }
+    }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .chip-b { display: none; }
+      .floating-cta { left: 14px; bottom: 14px; padding: 10px 16px; font-size: 0.84rem; }
+      .founder-card { padding: 24px 22px; }
+      .dossier-metric-val { font-size: 1.35rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- INLINE HEADER NAVIGATION -->
-  <header class="navbar">
+  <div class="scroll-progress" aria-hidden="true"><span id="progress-fill"></span></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="site-navbar">
     <div class="container navbar-container">
       <a href="home.html" class="brand-logo" aria-label="OutPerform Institute Home">
-        <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo">
+        <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo" />
       </a>
+
       <nav>
         <ul class="nav-links" id="nav-menu">
           <li><a href="home.html" class="nav-link">Home</a></li>
@@ -221,151 +416,257 @@
           <li><a href="/blog" class="nav-link">Blog</a></li>
         </ul>
       </nav>
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.85rem;">Schedule Executive Briefing</button>
-        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">&#9776;</button>
+
+      <div class="nav-cta">
+        <button onclick="openBookingModal()" class="btn btn-accent">Book a Brief</button>
       </div>
+
+      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION WITH SUBTLE ANIMATED BACKGROUND -->
-    <section class="hero">
-      <div class="hero-bg-animation"></div>
+    <!-- ================= HERO + 3D OPERATOR DOSSIER ================= -->
+    <section class="hero" id="hero-section">
       <div class="container">
-        <div class="hero-content">
-          <span class="caps-label">Embedded Operating Experience</span>
-          
-          <h1 class="hero-title">
-            Built by a 30-Year Enterprise Sales Operator and Former CEO. <span class="text-accent">Not a Seminar Speaker.</span>
-          </h1>
-          
-          <p class="hero-subtitle">
-            OutPerform Institute exists for one reason: founders of scaling B2B companies who are still acting as their own sales manager, whose sales teams have outgrown what personal oversight can hold together.
-          </p>
+        <div class="hero-grid">
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button onclick="openBookingModal()" class="btn btn-accent">Book Executive Brief</button>
-            <a href="Services.html" class="btn btn-primary">Engagement Architecture</a>
-          </div>
-        </div>
-      </div>
-    </section>
+          <div class="hero-content">
+            <span class="caps-label">Embedded Operating Experience</span>
 
-    <!-- FOUNDER BACKGROUND & PHILOSOPHY -->
-    <section class="section">
-      <div class="container">
-        <div class="founder-layout" style="margin-bottom: 56px;">
-          <div class="founder-card">
-            <div class="founder-title">Founder & Managing Director</div>
-            <h2 class="founder-name">Brian Taylor</h2>
-            <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 20px;">
-              Over three decades of enterprise sales execution, scaling B2B sales organizations, and serving as a Chief Executive Officer. Brian leads embedded sales leadership engagements for B2B SaaS and IT services firms generating between $10M and $75M ARR.
+            <h1 class="hero-title">
+              Built by a 30-year enterprise sales operator and former CEO.<br>
+              <span class="text-accent">Not a seminar speaker.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              OutPerform Institute exists for one reason: founders of scaling B2B companies who are still acting as their own sales manager — whose sales teams have outgrown what personal oversight can hold together.
             </p>
-            
-            <div class="founder-stats">
-              <div>
-                <div class="stat-num">30+</div>
-                <div class="stat-lbl">Years Enterprise Experience</div>
+
+            <div class="hero-ctas">
+              <button onclick="openBookingModal()" class="btn btn-accent">Book Executive Brief</button>
+              <a href="Services.html" class="btn btn-secondary">Engagement Architecture</a>
+            </div>
+
+            <div class="hero-trust-bar">
+              <div class="trust-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>30 years closing enterprise deals</span>
               </div>
-              <div>
-                <div class="stat-num">100%</div>
-                <div class="stat-lbl">Embedded Operator Focus</div>
+              <div class="trust-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Former chief executive</span>
+              </div>
+              <div class="trust-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>100% embedded operator focus</span>
               </div>
             </div>
           </div>
 
-          <div>
+          <!-- 3D OPERATOR DOSSIER -->
+          <div class="hero-visual">
+            <div class="dossier-scroll">
+              <div class="dossier-float">
+                <div class="dossier-3d" id="dossier3d">
+
+                  <div class="dossier-header">
+                    <div class="dossier-dots">
+                      <span class="dot dot-emerald"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                    </div>
+                    <div class="dossier-title-tag">Operator Dossier · Embedded</div>
+                  </div>
+
+                  <div class="dossier-body">
+                    <div class="dossier-id">
+                      <div class="dossier-avatar">BT</div>
+                      <div>
+                        <strong>Brian Taylor</strong>
+                        <small>Founder &amp; Managing Director</small>
+                        <em>Enterprise sales · former CEO</em>
+                      </div>
+                    </div>
+
+                    <div class="dossier-metrics">
+                      <div class="dossier-metric">
+                        <div class="dossier-metric-lbl">Enterprise Sales</div>
+                        <div class="dossier-metric-val"><span class="counter" data-target="30" data-suffix="+">0+</span></div>
+                        <div class="dossier-metric-sub">Years in the field</div>
+                      </div>
+                      <div class="dossier-metric">
+                        <div class="dossier-metric-lbl">ARR Scale Scope</div>
+                        <div class="dossier-metric-val"><span class="counter" data-target="75" data-prefix="$" data-suffix="M">$0M</span></div>
+                        <div class="dossier-metric-sub">$10M–$75M engagements</div>
+                      </div>
+                      <div class="dossier-metric">
+                        <div class="dossier-metric-lbl">Embedded Cadence</div>
+                        <div class="dossier-metric-val">1 day<span style="font-size: 1rem;">/wk</span></div>
+                        <div class="dossier-metric-sub">Inside your team</div>
+                      </div>
+                      <div class="dossier-metric">
+                        <div class="dossier-metric-lbl">Operator Focus</div>
+                        <div class="dossier-metric-val"><span class="counter" data-target="100" data-suffix="%">0%</span></div>
+                        <div class="dossier-metric-sub">No seminar circuit</div>
+                      </div>
+                    </div>
+
+                    <div class="dossier-quote">
+                      "Performance doesn't scale without structure. <span>Predictable revenue is engineered — not hoped for.</span>"
+                    </div>
+                  </div>
+
+                  <div class="float-chip chip-a" aria-hidden="true">
+                    <div class="chip-inner">
+                      <span class="chip-icon">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
+                      <span class="chip-text">
+                        <strong>Former CEO</strong>
+                        <small>Has run the whole P&amp;L</small>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="float-chip chip-b" aria-hidden="true">
+                    <div class="chip-inner">
+                      <span class="chip-icon">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                      </span>
+                      <span class="chip-text">
+                        <strong>$10M–$75M ARR</strong>
+                        <small>B2B SaaS &amp; IT services</small>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOUNDER & PHILOSOPHY ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="founder-layout">
+
+          <div class="founder-card glare reveal" data-tilt="4">
+            <span class="founder-ghost" aria-hidden="true">30</span>
+            <div class="founder-title">Founder &amp; Managing Director</div>
+            <h2 class="founder-name">Brian Taylor</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; max-width: none;">
+              Over three decades of enterprise sales execution, scaling B2B sales organizations, and serving as a Chief Executive Officer. Brian leads embedded sales leadership engagements for B2B SaaS and IT services firms generating between $10M and $75M ARR.
+            </p>
+            <div class="founder-stats">
+              <div>
+                <div class="stat-num">30+</div>
+                <div class="stat-lbl">Years enterprise experience</div>
+              </div>
+              <div>
+                <div class="stat-num">100%</div>
+                <div class="stat-lbl">Embedded operator focus</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
             <span class="caps-label">Core Philosophy</span>
-            <h2 style="font-size: 1.85rem; margin-bottom: 18px;">
+            <h2 class="philosophy-quote">
               Sales performance is a system problem, not a training problem.
             </h2>
-            <p class="lead" style="font-size: 1.02rem; margin-bottom: 16px;">
-              Most sales organizations operate in a state of continuous reactivity. When sales targets are missed, leadership responds with pep talks or temporary tactics. This addresses symptoms while leaving the underlying lack of structure untouched.
+            <p class="lead" style="margin-bottom: 16px;">
+              Most sales organizations operate in a state of continuous reactivity. When targets are missed, leadership responds with pep talks or temporary tactics. That addresses symptoms while leaving the underlying lack of structure untouched.
             </p>
             <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.65;">
               True scalability requires architecture. When you replace subjective rep opinions with objective inspection rules and stage velocity standards, revenue predictability becomes an engineered outcome.
             </p>
+            <div class="founder-ctas">
+              <button onclick="openBookingModal()" class="btn btn-accent">Book a Call with Brian</button>
+              <a href="Services.html" class="btn btn-primary">See the Method &rarr;</a>
+            </div>
           </div>
-        </div>
 
-        <!-- OPERATING PRINCIPLES GRID WITH VISUAL CARDS -->
-        <div class="section-header">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OPERATING PRINCIPLES ================= -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header reveal">
           <span class="caps-label">Disciplined Execution</span>
-          <h2>Our Core Operating Principles</h2>
+          <h2>Our core operating principles.</h2>
+          <p class="lead">Three convictions that shape every engagement we take on.</p>
         </div>
 
         <div class="grid-3">
-          <div class="card">
+          <div class="card glare reveal" data-tilt="7">
             <div class="card-visual-header">
               <div class="card-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
               </div>
-              <span class="card-num-tag">PRINCIPLE // 01</span>
+              <span class="card-num">01</span>
             </div>
-            <h3 class="card-title">Real-World Execution Over Theory</h3>
-            <p class="card-desc">
-              We do not deliver PowerPoint decks and exit. We embed directly into your sales cadences, run pipeline inspections, and establish accountability standards alongside your team.
-            </p>
+            <h3 class="card-title">Real-world execution over theory</h3>
+            <p class="card-desc">We do not deliver PowerPoint decks and exit. We embed directly into your sales cadences, run pipeline inspections, and establish accountability standards alongside your team.</p>
           </div>
 
-          <div class="card">
+          <div class="card glare reveal" data-tilt="7">
             <div class="card-visual-header">
               <div class="card-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
               </div>
-              <span class="card-num-tag">PRINCIPLE // 02</span>
+              <span class="card-num">02</span>
             </div>
-            <h3 class="card-title">Systems Eliminate Variability</h3>
-            <p class="card-desc">
-              Relying on individual talent creates revenue spikes and crashes. Building an operating system creates consistent execution across every rep on your roster.
-            </p>
+            <h3 class="card-title">Systems eliminate variability</h3>
+            <p class="card-desc">Relying on individual talent creates revenue spikes and crashes. Building an operating system creates consistent execution across every rep on your roster.</p>
           </div>
 
-          <div class="card">
+          <div class="card glare reveal" data-tilt="7">
             <div class="card-visual-header">
               <div class="card-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               </div>
-              <span class="card-num-tag">PRINCIPLE // 03</span>
+              <span class="card-num">03</span>
             </div>
-            <h3 class="card-title">Verifiable Buyer Evidence</h3>
-            <p class="card-desc">
-              Pipeline health is calculated through verified buyer milestones, not rep optimism. If a stage transition lacks documented evidence, it does not exist in the forecast.
-            </p>
+            <h3 class="card-title">Verifiable buyer evidence</h3>
+            <p class="card-desc">Pipeline health is calculated through verified buyer milestones, not rep optimism. If a stage transition lacks documented evidence, it does not exist in the forecast.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SINGLE-ACTION BOTTOM CTA BANNER -->
-    <section class="section" style="border-bottom: none;">
+    <!-- ================= FINAL CTA ================= -->
+    <section class="section">
       <div class="container">
-        <div class="cta-banner">
+        <div class="cta-banner glare reveal" data-tilt="3">
           <span class="caps-label">Executive Action</span>
-          <h2>Connect Directly with Brian Taylor</h2>
+          <h2>Connect directly with Brian Taylor.</h2>
           <p>
-            Schedule a 15-minute diagnostic call with Brian Taylor to review your current sales organization structure and pipeline mechanics.
+            Schedule a 15-minute diagnostic call to review your current sales organization structure and pipeline mechanics.
           </p>
-          <div style="margin-top: 24px;">
-            <button onclick="openBookingModal()" class="btn btn-accent" style="font-size: 1rem; padding: 13px 32px;">Schedule Executive Briefing</button>
-          </div>
+          <button onclick="openBookingModal()" class="btn btn-accent" style="font-size: 1rem; padding: 14px 36px;">Schedule Executive Briefing</button>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- INLINE FOOTER -->
+  <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <a href="home.html" class="brand-logo" style="margin-bottom: 16px; display: inline-block;">
-            <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute">
+        <div class="footer-brand">
+          <a href="home.html" class="brand-logo">
+            <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo" />
           </a>
-          <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 320px; line-height: 1.6;">
-            Fractional sales leadership for B2B tech and service founders scaling past $1M+ ARR without headcount waste.
-          </p>
+          <p>Fractional sales leadership for B2B SaaS &amp; IT founders. Structure over motivation. Systems over heroics.</p>
         </div>
 
         <div>
@@ -394,8 +695,8 @@
           <ul class="footer-links">
             <li class="footer-link">info@email.outperforminstitute.com</li>
             <li class="footer-link">+1 314 228 8473</li>
-            <li style="margin-top: 10px;">
-              <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 16px; font-size: 0.82rem;">Book Executive Brief</button>
+            <li style="margin-top: 12px;">
+              <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.84rem;">Book a Brief</button>
             </li>
           </ul>
         </div>
@@ -408,14 +709,20 @@
     </div>
   </footer>
 
-  <!-- EXIT INTENT POPUP MODAL -->
+  <!-- ================= FLOATING BOOK-A-CALL ================= -->
+  <button class="floating-cta" id="floating-cta" onclick="openBookingModal()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a Call
+  </button>
+
+  <!-- ================= BOOKING MODAL ================= -->
   <div class="modal-overlay" id="exit-intent-modal" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" onclick="closeBookingModal()" aria-label="Close modal">&times;</button>
-      <div style="margin-bottom: 16px;">
-        <span class="caps-label">Executive Briefing</span>
-        <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Schedule Your Sales System Audit</h3>
-        <p style="color: var(--text-muted); font-size: 0.92rem;">Select a time for a 15-minute diagnostic call on your sales operating structure.</p>
+      <div style="margin-bottom: 20px;">
+        <span class="caps-label">Executive Brief</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Book a 15-Minute Brief</h3>
+        <p style="color: var(--text-muted); font-size: 0.94rem;">Pick a time for your sales-structure diagnostic call.</p>
       </div>
       <div>
         <iframe src="https://api.revenuelab360.com/widget/booking/7Q047XwldSbfTEI5mRJY" allow="payment" style="width: 100%; border:none; overflow: hidden; min-height: 500px;" scrolling="no" id="7Q047XwldSbfTEI5mRJY_modal"></iframe>
@@ -424,70 +731,247 @@
     </div>
   </div>
 
-  <!-- LEAD CONNECTOR SITE-WIDE CHAT WIDGET -->
+  <!-- CHAT WIDGET -->
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b86e7826d17f8cad31721e"></script>
 
-  <!-- INLINE INTERACTIVE JAVASCRIPT ENGINE -->
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    // GLOBAL MODAL CONTROLLERS
-    window.openBookingModal = function() {
-      const modal = document.getElementById("exit-intent-modal");
-      if (modal) {
-        modal.style.display = "flex";
-        setTimeout(() => {
-          modal.classList.add("active");
-          modal.setAttribute("aria-hidden", "false");
-        }, 10);
-      }
-    };
+    if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("gsap-anim");
+    }
+  </script>
 
-    window.closeBookingModal = function() {
-      const modal = document.getElementById("exit-intent-modal");
-      if (modal) {
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-        setTimeout(() => {
-          modal.style.display = "none";
-        }, 200);
-      }
+  <script>
+    /* ============ MODAL CONTROLLERS ============ */
+    window.openBookingModal = function () {
+      const m = document.getElementById("exit-intent-modal");
+      if (m) { m.style.display = "flex"; setTimeout(() => { m.classList.add("active"); m.setAttribute("aria-hidden", "false"); }, 10); }
+    };
+    window.closeBookingModal = function () {
+      const m = document.getElementById("exit-intent-modal");
+      if (m) { m.classList.remove("active"); m.setAttribute("aria-hidden", "true"); setTimeout(() => { m.style.display = "none"; }, 200); }
     };
 
     document.addEventListener("DOMContentLoaded", function () {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const finePointer = window.matchMedia("(pointer: fine)").matches;
+      const anim = document.documentElement.classList.contains("gsap-anim");
+      if (anim && window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ ignoreMobileResize: true });
+      }
+
+      /* ============ MOBILE NAV ============ */
       const toggleBtn = document.getElementById("mobile-toggle-btn");
       const navMenu = document.getElementById("nav-menu");
-      if (toggleBtn && navMenu) {
-        toggleBtn.addEventListener("click", function () {
-          navMenu.classList.toggle("mobile-open");
+      if (toggleBtn && navMenu) toggleBtn.addEventListener("click", () => navMenu.classList.toggle("mobile-open"));
+
+      /* ============ PROGRESS BAR + NAVBAR + FLOATING CTA ============ */
+      const progressFill = document.getElementById("progress-fill");
+      const navbar = document.getElementById("site-navbar");
+      const floatingCta = document.getElementById("floating-cta");
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const top = window.scrollY || document.documentElement.scrollTop;
+          const full = document.documentElement.scrollHeight - window.innerHeight;
+          if (progressFill) progressFill.style.width = (full > 0 ? (top / full) * 100 : 0) + "%";
+          if (navbar) navbar.classList.toggle("scrolled", top > 10);
+          if (floatingCta) floatingCta.classList.toggle("show", top > 480);
+          ticking = false;
+        });
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      /* ============ GLARE ============ */
+      if (finePointer && !reduced) {
+        document.querySelectorAll(".glare").forEach(el => {
+          el.addEventListener("pointermove", e => {
+            const r = el.getBoundingClientRect();
+            el.style.setProperty("--gx", (((e.clientX - r.left) / r.width) * 100).toFixed(1) + "%");
+            el.style.setProperty("--gy", (((e.clientY - r.top) / r.height) * 100).toFixed(1) + "%");
+            el.style.setProperty("--go", "1");
+          });
+          el.addEventListener("pointerleave", () => el.style.setProperty("--go", "0"));
         });
       }
 
-      // EXIT INTENT DETECTION
-      let exitTriggered = false;
-      document.addEventListener("mouseleave", function (e) {
-        if ((e.clientY <= 12 || e.clientY === undefined) && !exitTriggered) {
-          exitTriggered = true;
-          openBookingModal();
+      /* ============ SMOOTH 3D TILT (founder / principle / CTA cards) ============ */
+      const tiltEls = [];
+      if (finePointer && !reduced) {
+        document.querySelectorAll("[data-tilt]").forEach(el => {
+          const t = { el, max: parseFloat(el.getAttribute("data-tilt")) || 6, tx: 0, ty: 0, cx: 0, cy: 0, lift: 0, targetLift: 0 };
+          el.addEventListener("pointermove", e => {
+            const r = el.getBoundingClientRect();
+            t.tx = (((e.clientX - r.left) / r.width) - 0.5) * 2;
+            t.ty = (((e.clientY - r.top) / r.height) - 0.5) * 2;
+            t.targetLift = 1;
+          });
+          el.addEventListener("pointerleave", () => { t.tx = 0; t.ty = 0; t.targetLift = 0; });
+          tiltEls.push(t);
+        });
+      }
+      const tiltLoop = () => {
+        tiltEls.forEach(t => {
+          t.cx += (t.tx - t.cx) * 0.11;
+          t.cy += (t.ty - t.cy) * 0.11;
+          t.lift += (t.targetLift - t.lift) * 0.11;
+          const idle = !t.targetLift && Math.abs(t.cx) < 0.003 && Math.abs(t.cy) < 0.003 && t.lift < 0.004;
+          if (idle) { if (t.el.style.transform) t.el.style.transform = ""; return; }
+          t.el.style.transform =
+            "perspective(1000px) rotateX(" + (-t.cy * t.max).toFixed(2) + "deg) " +
+            "rotateY(" + (t.cx * t.max).toFixed(2) + "deg) " +
+            "translateY(" + (-t.lift * 7).toFixed(2) + "px) " +
+            "scale(" + (1 + t.lift * 0.018).toFixed(3) + ")";
+        });
+        requestAnimationFrame(tiltLoop);
+      };
+      if (tiltEls.length) requestAnimationFrame(tiltLoop);
+
+      /* ============ FALLBACKS ============ */
+      const fallbackReveals = () => {
+        const els = document.querySelectorAll(".reveal");
+        if (reduced || !("IntersectionObserver" in window)) { els.forEach(el => el.classList.add("in-view")); return; }
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in-view"); io.unobserve(en.target); } });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        els.forEach(el => io.observe(el));
+      };
+      const fallbackNumbers = () => {
+        const easeOut = x => 1 - Math.pow(1 - x, 3);
+        document.querySelectorAll(".counter").forEach(counter => {
+          const target = parseFloat(counter.dataset.target) || 0;
+          const prefix = counter.dataset.prefix || "";
+          const suffix = counter.dataset.suffix || "";
+          const dec = target % 1 !== 0;
+          if (reduced) { counter.textContent = prefix + (dec ? target.toFixed(1) : target) + suffix; return; }
+          const dur = 1400, t0 = performance.now();
+          const step = now => {
+            const k = Math.min((now - t0) / dur, 1);
+            const v = target * easeOut(k);
+            counter.textContent = prefix + (dec ? v.toFixed(1) : Math.round(v)) + suffix;
+            if (k < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+      };
+
+      /* ============ GSAP ============ */
+      if (anim && window.gsap && window.ScrollTrigger) {
+        try {
+          /* --- Hero entrance (dossier revealed as ONE block via fromTo;
+                 FOUC guard in CSS pre-hides it from first paint) --- */
+          gsap.timeline({ defaults: { ease: "power3.out" } })
+            .from(".hero-content .caps-label", { y: 24, autoAlpha: 0, duration: 0.65 }, 0.05)
+            .from(".hero-title", { y: 34, autoAlpha: 0, duration: 0.9 }, 0.15)
+            .from(".hero-subtitle", { y: 28, autoAlpha: 0, duration: 0.8 }, 0.3)
+            .from(".hero-ctas", { y: 24, autoAlpha: 0, duration: 0.75 }, 0.42)
+            .from(".hero-trust-bar", { y: 20, autoAlpha: 0, duration: 0.75 }, 0.54)
+            .fromTo(".hero-visual",
+              { y: 64, autoAlpha: 0, scale: 0.96 },
+              { y: 0, autoAlpha: 1, scale: 1, duration: 1.1 }, 0.25);
+
+          /* --- Dossier rotates away as you scroll out of the hero --- */
+          gsap.to(".dossier-scroll", {
+            rotateX: -8, rotateY: 13, y: -80, scale: 0.94, ease: "none",
+            scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom 25%", scrub: 0.7 }
+          });
+
+          /* --- Cursor tilt on the dossier (spring-smoothed quickTo) --- */
+          if (finePointer) {
+            const heroSection = document.getElementById("hero-section");
+            const dossierTilt = document.getElementById("dossier3d");
+            if (heroSection && dossierTilt) {
+              const qRX = gsap.quickTo(dossierTilt, "rotateX", { duration: 0.8, ease: "power3" });
+              const qRY = gsap.quickTo(dossierTilt, "rotateY", { duration: 0.8, ease: "power3" });
+              heroSection.addEventListener("pointermove", e => {
+                qRY((e.clientX / window.innerWidth - 0.5) * 9);
+                qRX((0.5 - e.clientY / window.innerHeight) * 7);
+              });
+              heroSection.addEventListener("pointerleave", () => { qRX(0); qRY(0); });
+            }
+          }
+
+          /* --- Reveals --- */
+          gsap.utils.toArray(".reveal").forEach(el => {
+            const sibs = el.parentElement ? Array.from(el.parentElement.children).filter(c => c.classList.contains("reveal")) : [];
+            const idx = sibs.indexOf(el);
+            gsap.fromTo(el,
+              { opacity: 0, y: 44 },
+              { opacity: 1, y: 0, duration: 0.95, ease: "power3.out",
+                delay: idx > 0 ? Math.min(idx * 0.1, 0.25) : 0,
+                scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+          });
+
+          /* --- Counters (dossier stats) --- */
+          gsap.utils.toArray(".counter").forEach(el => {
+            const target = parseFloat(el.dataset.target) || 0;
+            const prefix = el.dataset.prefix || "";
+            const suffix = el.dataset.suffix || "";
+            const dec = target % 1 !== 0;
+            const proxy = { v: 0 };
+            gsap.to(proxy, {
+              v: target, duration: 1.8, ease: "power2.out",
+              scrollTrigger: { trigger: el, start: "top 92%", once: true },
+              onUpdate: () => { el.textContent = prefix + (dec ? proxy.v.toFixed(1) : Math.round(proxy.v)) + suffix; }
+            });
+          });
+
+          /* --- Parallax drift on the founder ghost "30" --- */
+          const fGhost = document.querySelector(".founder-ghost");
+          if (fGhost) {
+            gsap.fromTo(fGhost, { y: 40 }, {
+              y: -40, ease: "none",
+              scrollTrigger: { trigger: fGhost.parentElement, start: "top bottom", end: "bottom top", scrub: 0.6 }
+            });
+          }
+
+          window.addEventListener("load", () => ScrollTrigger.refresh());
+
+        } catch (err) {
+          document.documentElement.classList.remove("gsap-anim");
+          gsap.set(".reveal, .founder-ghost, .hero-visual", { clearProps: "all" });
+          fallbackReveals(); fallbackNumbers();
         }
+      } else {
+        fallbackReveals(); fallbackNumbers();
+      }
+
+      /* ============ EXIT INTENT (fixed version) ============ */
+      let lastExitFire = 0;
+      const modalEl = document.getElementById("exit-intent-modal");
+      const modalIsOpen = () => !!(modalEl && modalEl.classList.contains("active"));
+      const fireExitIntent = () => {
+        const now = Date.now();
+        if (modalIsOpen() || now - lastExitFire < 15000) return;
+        lastExitFire = now;
+        openBookingModal();
+      };
+      document.addEventListener("mouseout", function (e) {
+        if (!e.relatedTarget && !e.toElement && e.clientY <= 12) fireExitIntent();
       });
 
-      // MOBILE SCROLL EXIT TRIGGER
-      let scrollTriggered = false;
+      let mobileScrollFired = false;
       window.addEventListener("scroll", function () {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (docHeight > 0 && scrollTop / docHeight > 0.7 && !scrollTriggered && window.innerWidth <= 768) {
-          scrollTriggered = true;
-          openBookingModal();
+        if (mobileScrollFired) return;
+        const top = window.pageYOffset || document.documentElement.scrollTop;
+        const full = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (window.innerWidth <= 768 && full > 0 && top / full > 0.7) {
+          mobileScrollFired = true;
+          fireExitIntent();
         }
-      });
+      }, { passive: true });
 
-      // MODAL BACKGROUND CLICK TO CLOSE
-      document.addEventListener("click", function (e) {
-        const modal = document.getElementById("exit-intent-modal");
-        if (e.target === modal) {
-          closeBookingModal();
-        }
+      /* ============ MODAL: CLICK OUTSIDE + ESC ============ */
+      document.addEventListener("click", e => {
+        if (e.target === modalEl) closeBookingModal();
       });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") closeBookingModal(); });
     });
   </script>
 </body>

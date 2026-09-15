@@ -1,59 +1,61 @@
 <style>
+  /* ================= DESIGN SYSTEM TOKENS FOR FOOTER ================= */
   :root {
+    --bg-light: #F8FAFC;
     --bg-white: #FFFFFF;
     --bg-subtle: #F1F5F9;
     --border-color: #E2E8F0;
     --text-primary: #0F172A;
     --text-muted: #475569;
-    --accent-lime: #32CD32;
+    --text-subtle: #64748B;
+    --green-text: rgb(59, 126, 68);
+    --green-btn: rgb(103, 202, 77);
+    --green-btn-hover: rgb(84, 176, 58);
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --container-max: 1200px;
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+    --transition: all 0.2s ease-in-out;
   }
-  .footer {
-    background-color: var(--bg-white); border-top: 1px solid var(--border-color);
-    padding: 60px 0 32px; font-family: var(--font-main); color: var(--text-primary); width: 100%;
+
+  .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 13px 26px; font-weight: 700; font-size: 0.95rem; border-radius: 8px;
+    cursor: pointer; transition: var(--transition); border: 1.5px solid transparent;
+    white-space: nowrap; user-select: none;
   }
-  .footer-container {
-    width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px;
-  }
-  .footer-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 48px;
-  }
-  .footer-brand p {
-    color: var(--text-muted); font-size: 0.88rem; max-width: 320px; line-height: 1.6; margin-top: 16px;
-  }
-  .footer-heading {
-    font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text-primary); margin-bottom: 16px;
-  }
+  .btn-accent { background-color: var(--green-btn); color: #FFF; border-color: var(--green-btn); box-shadow: 0 4px 14px rgba(103, 202, 77, 0.35); }
+  .btn-accent:hover { background-color: var(--green-btn-hover); border-color: var(--green-btn-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(103, 202, 77, 0.45); }
+
+  /* ================= FOOTER ================= */
+  .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 64px 0 32px; margin-top: auto; font-family: var(--font-main); color: var(--text-primary); width: 100%; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
+  .footer-brand p { color: var(--text-muted); margin-top: 14px; font-size: 0.92rem; max-width: 340px; line-height: 1.6; }
+  .footer-heading { font-size: 0.8rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 16px; }
   .footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .footer-link { font-size: 0.88rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+  .footer-link { color: var(--text-muted); font-size: 0.92rem; text-decoration: none; transition: color 0.2s ease; }
   .footer-link:hover { color: var(--text-primary); }
-  .btn-accent-sm {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 8px 16px; font-weight: 700; font-size: 0.82rem; border-radius: 6px;
-    cursor: pointer; transition: all 0.2s ease; border: 1.5px solid #32CD32;
-    background-color: #32CD32; color: #000000; text-decoration: none;
+  .footer-bottom { padding-top: 28px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.84rem; }
+
+  /* ================= RESPONSIVE FOOTER ================= */
+  @media (max-width: 992px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
   }
-  .btn-accent-sm:hover { background-color: #0F172A; color: #FFFFFF; border-color: #0F172A; }
-  .footer-bottom {
-    border-top: 1px solid var(--border-color); padding-top: 24px;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.82rem; color: var(--text-muted);
-  }
-  @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
 
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="footer-container">
+  <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="home.html" class="brand-logo">
           <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo" style="height: 34px; width: auto; display: block;" />
         </a>
-        <p>Embedded fractional sales leadership for B2B tech and service founders scaling past $1M+ ARR without headcount waste.</p>
+        <p>Fractional sales leadership for B2B SaaS &amp; IT founders. Structure over motivation. Systems over heroics.</p>
       </div>
 
       <div>
@@ -82,8 +84,8 @@
         <ul class="footer-links">
           <li class="footer-link">info@email.outperforminstitute.com</li>
           <li class="footer-link">+1 314 228 8473</li>
-          <li style="margin-top: 10px;">
-            <button onclick="typeof openBookingModal === 'function' ? openBookingModal() : location.href='Booking.html'" class="btn-accent-sm">Book Executive Brief</button>
+          <li style="margin-top: 12px;">
+            <button onclick="typeof openBookingModal === 'function' ? openBookingModal() : (window.location.href='Booking.html')" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.84rem;">Book a Brief</button>
           </li>
         </ul>
       </div>

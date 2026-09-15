@@ -9,179 +9,450 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
 
   <style>
-    /* MASTER EXECUTIVE LIGHT MODE DESIGN SYSTEM */
+    /* ================= DESIGN SYSTEM (identical to home) ================= */
     :root {
       --bg-light: #F8FAFC;
       --bg-white: #FFFFFF;
-      --bg-card: #FFFFFF;
       --bg-subtle: #F1F5F9;
       --border-color: #E2E8F0;
-      --border-dark: #0F172A;
       --text-primary: #0F172A;
       --text-muted: #475569;
       --text-subtle: #64748B;
-      --accent-lime: #32CD32;
-      --accent-lime-dark: #15803D;
-      --accent-lime-subtle: rgba(50, 205, 50, 0.1);
+      --green-text: rgb(59, 126, 68);
+      --green-btn: rgb(103, 202, 77);
+      --green-btn-hover: rgb(84, 176, 58);
       --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --container-max: 1240px;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 16px 32px -10px rgba(15, 23, 42, 0.1);
-      --transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      --container-max: 1200px;
+      --text-max-width: 62ch;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.2s ease-in-out;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; scrollbar-color: var(--green-btn) var(--bg-subtle); }
     html, body {
-      scroll-behavior: smooth; font-family: var(--font-main); background-color: var(--bg-light);
-      color: var(--text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; overflow-y: auto; width: 100%;
+      font-family: var(--font-main); background-color: var(--bg-light);
+      color: var(--text-primary); line-height: 1.65; -webkit-font-smoothing: antialiased;
+      overflow-x: clip; width: 100%;
     }
-    body { min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+    @supports not (overflow: clip) { html, body { overflow-x: hidden; } }
+    body { min-height: 100vh; display: flex; flex-direction: column; }
     a { color: inherit; text-decoration: none; transition: var(--transition); }
     img { max-width: 100%; height: auto; display: block; }
     .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+    ::selection { background: rgba(103, 202, 77, 0.28); }
+    .btn:focus-visible, a:focus-visible, .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--green-text); outline-offset: 3px; border-radius: 6px; }
 
-    /* TYPOGRAPHY */
-    h1, h2, h3, h4, h5, h6 { color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
-    h1 { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
-    h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
-    
-    /* PLAIN SMALL-CAPS LABEL */
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: var(--bg-subtle); }
+    ::-webkit-scrollbar-thumb { background: var(--green-btn); border-radius: 10px; border: 3px solid var(--bg-subtle); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--green-text); }
+
+    /* ================= TYPOGRAPHY ================= */
+    h1, h2, h3, h4 { color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em; line-height: 1.18; }
+    h1 { font-size: clamp(2.4rem, 3.6vw, 3.1rem); }
+    h2 { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }
+    h3 { font-size: clamp(1.15rem, 1.5vw, 1.35rem); }
+    p { max-width: var(--text-max-width); }
+    p.lead { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; }
+    .text-accent { color: var(--green-text); }
+
     .caps-label {
-      font-size: 0.78rem; font-weight: 800; color: var(--accent-lime-dark);
-      text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px;
+      font-size: 0.76rem; font-weight: 800; color: var(--green-text);
+      text-transform: uppercase; letter-spacing: 0.09em; display: inline-block; margin-bottom: 14px;
+      background: rgba(59, 126, 68, 0.07); padding: 4px 12px; border-radius: 4px;
+      border: 1px solid rgba(59, 126, 68, 0.22);
     }
 
-    /* BUTTONS - COLOR-ONLY HOVER */
+    /* ================= BUTTONS ================= */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 11px 22px; font-weight: 700; font-size: 0.92rem; border-radius: 6px;
-      cursor: pointer; transition: var(--transition); border: 1.5px solid transparent; white-space: nowrap;
-      position: relative; z-index: 2; pointer-events: auto; user-select: none;
+      padding: 13px 26px; font-weight: 700; font-size: 0.95rem; border-radius: 8px;
+      cursor: pointer; transition: var(--transition); border: 1.5px solid transparent;
+      white-space: nowrap; user-select: none;
     }
-    .btn-accent {
-      background-color: var(--accent-lime); color: #000000; border-color: var(--accent-lime);
-    }
-    .btn-accent:hover {
-      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
-    }
-    .btn-secondary {
-      background-color: var(--bg-subtle); color: var(--text-primary); border-color: var(--border-color);
-    }
-    .btn-secondary:hover {
-      background-color: var(--text-primary); color: var(--bg-white); border-color: var(--text-primary);
-    }
-    .btn-block { width: 100%; }
+    .btn-primary { background-color: var(--text-primary); color: #FFF; border-color: var(--text-primary); box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background-color: #1E293B; border-color: #1E293B; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-accent { background-color: var(--green-btn); color: #FFF; border-color: var(--green-btn); box-shadow: 0 4px 14px rgba(103, 202, 77, 0.35); }
+    .btn-accent:hover { background-color: var(--green-btn-hover); border-color: var(--green-btn-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(103, 202, 77, 0.45); }
+    .btn-secondary { background-color: var(--bg-white); color: var(--text-primary); border-color: var(--border-color); box-shadow: var(--shadow-sm); }
+    .btn-secondary:hover { background-color: var(--bg-subtle); border-color: var(--text-primary); }
+    .btn-lg { font-size: 1rem; padding: 15px 34px; }
 
-    /* NAVBAR */
+    /* ================= SCROLL PROGRESS ================= */
+    .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 2000; pointer-events: none; }
+    .scroll-progress span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--green-btn), var(--green-text)); }
+
+    /* ================= NAVBAR ================= */
     .navbar {
-      position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border-color); height: 72px; display: flex; align-items: center;
+      position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color); height: 74px; display: flex; align-items: center;
+      transition: box-shadow 0.3s ease;
     }
+    .navbar.scrolled { box-shadow: 0 6px 24px -12px rgba(15, 23, 42, 0.18); }
     .navbar-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
     .brand-logo img { height: 34px; width: auto; }
-    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-    .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); padding: 4px 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-link { font-size: 0.92rem; font-weight: 600; color: var(--text-muted); padding: 4px 0; position: relative; }
+    .nav-link::after {
+      content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%;
+      background: var(--green-btn); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+    }
     .nav-link:hover, .nav-link.active { color: var(--text-primary); }
-    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); cursor: pointer; }
 
-    /* HERO & SECTIONS */
+    /* ================= HERO ================= */
     .hero {
-      padding: 36px 0 40px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-light) 100%);
-      position: relative; z-index: 1; overflow: hidden;
+      padding: 88px 0 96px;
+      background: radial-gradient(circle at 80% 20%, #F1F5F9 0%, #F8FAFC 70%);
+      position: relative; overflow: hidden;
     }
-    .hero-bg-animation {
-      position: absolute; inset: 0; pointer-events: none; opacity: 0.12; z-index: 0;
-      background-image: radial-gradient(var(--accent-lime) 1px, transparent 1px);
-      background-size: 24px 24px; animation: gridPulse 8s infinite alternate ease-in-out;
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; width: 100%; }
+    .hero-content { max-width: 580px; }
+    .hero-title { margin-bottom: 20px; }
+    .hero-subtitle { font-size: 1.06rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.65; max-width: 56ch; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+    .hero-trust-bar {
+      display: flex; flex-wrap: wrap; gap: 16px 24px; padding-top: 22px;
+      border-top: 1px solid var(--border-color); color: var(--text-subtle); font-size: 0.86rem; font-weight: 600;
     }
-    @keyframes gridPulse {
-      0% { opacity: 0.08; transform: scale(1); }
-      100% { opacity: 0.16; transform: scale(1.02); }
-    }
-    .hero-content { max-width: 780px; position: relative; z-index: 1; }
-    .hero-title { margin-bottom: 14px; }
-    .hero-subtitle { font-size: 1.02rem; color: var(--text-muted); margin-bottom: 24px; font-weight: 400; line-height: 1.55; }
+    .trust-item { display: flex; align-items: center; gap: 8px; }
+    .trust-item svg { color: var(--green-text); flex-shrink: 0; }
 
-    .section { padding: 48px 0; position: relative; z-index: 1; }
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
+    /* ============================================================
+       3D DIRECT LINE CONSOLE (hero right) — dashboard DNA from home.
+       Ownership split: .console-scroll = GSAP scroll rotation,
+       .console-float = CSS bob, .console-3d = cursor tilt (quickTo).
+       Z-depths live in CSS on leaves AND as data-z for the cascade
+       (set → to; never .from, never local perspective, never opacity
+       on 3D children).
+       ============================================================ */
+    .hero-visual { position: relative; perspective: 1600px; perspective-origin: 50% 40%; }
+    .hero-visual::before {
+      content: ""; position: absolute; inset: -14% -16%;
+      background: radial-gradient(closest-side, rgba(103, 202, 77, 0.12), rgba(103, 202, 77, 0) 72%);
+      transform: translateZ(-160px); pointer-events: none;
+    }
+    .console-scroll { transform-style: preserve-3d; will-change: transform; transform: rotateX(6deg) rotateY(-9deg); }
+    .console-float { transform-style: preserve-3d; animation: consoleBob 8s ease-in-out infinite alternate; }
+    @keyframes consoleBob { from { transform: translateY(-6px); } to { transform: translateY(7px); } }
 
-    /* VISUAL CARDS */
+    .console-3d {
+      position: relative; transform-style: preserve-3d; will-change: transform;
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
+      box-shadow: 0 30px 70px -20px rgba(15, 23, 42, 0.22), 0 12px 28px -14px rgba(15, 23, 42, 0.12);
+    }
+    .console-header {
+      transform: translateZ(16px);
+      background: var(--bg-subtle); padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-color); border-radius: 15px 15px 0 0;
+    }
+    .console-dots { display: flex; gap: 6px; align-items: center; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background-color: #CBD5E1; }
+    @keyframes livePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(103, 202, 77, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(103, 202, 77, 0); } }
+    .dot.dot-emerald { background-color: var(--green-btn); animation: livePulse 2.2s infinite; }
+    .console-title-tag { font-size: 0.72rem; font-weight: 800; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .console-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; transform-style: preserve-3d; }
+
+    .console-channels { display: flex; flex-direction: column; gap: 12px; }
+    .console-row {
+      display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 12px;
+      background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 10px;
+      padding: 13px 16px; transform: translateZ(28px);
+    }
+    .row-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); border: 1px solid rgba(103, 202, 77, 0.35);
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
+    }
+    .row-text { min-width: 0; }
+    .row-text small { display: block; font-size: 0.64rem; font-weight: 800; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 1px; }
+    .row-text strong { display: block; font-size: 0.84rem; font-weight: 800; color: var(--text-primary); line-height: 1.3; word-break: break-word; }
+    .row-badge {
+      flex-shrink: 0; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 4px 9px; border-radius: 4px;
+      border: 1px solid var(--border-color); color: var(--text-subtle); background: var(--bg-white);
+    }
+    .row-badge.live { color: var(--green-text); border-color: rgba(59, 126, 68, 0.3); background: rgba(59, 126, 68, 0.06); }
+
+    .console-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .console-metric { background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; transform: translateZ(36px); }
+    .console-metric small { display: block; font-size: 0.68rem; font-weight: 800; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+    .console-metric strong { display: block; font-size: 1.5rem; font-weight: 900; color: var(--text-primary); line-height: 1.1; }
+    .console-metric em { display: block; font-style: normal; font-size: 0.74rem; color: var(--green-text); font-weight: 700; margin-top: 5px; }
+
+    .console-strip {
+      transform: translateZ(20px);
+      background: var(--bg-light); border: 1px solid var(--border-color); border-left: 3px solid var(--green-btn);
+      border-radius: 10px; padding: 14px 18px;
+      font-size: 0.9rem; font-weight: 600; color: var(--text-muted); line-height: 1.55;
+    }
+    .console-strip span { color: var(--green-text); font-weight: 800; }
+
+    .float-chip { position: absolute; transform: translateZ(78px); pointer-events: none; }
+    .chip-a { top: -26px; right: -16px; }
+    .chip-b { bottom: -26px; left: -24px; transform: translateZ(92px); }
+    .chip-inner {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
+      box-shadow: 0 14px 30px -12px rgba(15, 23, 42, 0.18);
+      padding: 10px 14px; display: flex; align-items: center; gap: 10px;
+      animation: chipBob 5.5s ease-in-out infinite alternate;
+    }
+    .chip-b .chip-inner { animation-duration: 6.5s; animation-delay: -2.4s; }
+    @keyframes chipBob { from { transform: translateY(-4px); } to { transform: translateY(5px); } }
+    .chip-icon {
+      width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); border: 1px solid rgba(103, 202, 77, 0.35);
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
+    }
+    .chip-text strong { display: block; font-size: 0.82rem; font-weight: 800; color: var(--text-primary); line-height: 1.3; }
+    .chip-text small { display: block; font-size: 0.72rem; color: var(--text-subtle); font-weight: 600; }
+
+    /* ================= SECTIONS ================= */
+    .section { padding: 104px 0; position: relative; }
+    .section-white { background: var(--bg-white); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .section-header { margin-bottom: 52px; max-width: 660px; }
+    .section-header h2 { margin-bottom: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+
+    /* ================= GLARE ================= */
+    .glare { position: relative; }
+    .glare::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+      background: radial-gradient(480px circle at var(--gx, 50%) var(--gy, 50%), rgba(103, 202, 77, 0.14), rgba(103, 202, 77, 0.03) 45%, transparent 65%);
+      opacity: var(--go, 0); transition: opacity 0.4s ease;
+    }
+
+    /* ================= CONTACT OPTION CARDS ================= */
+    .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 28px; align-items: start; }
+
+    .option-card {
+      position: relative;
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 36px;
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm); will-change: transform;
+      transform-style: preserve-3d;
+      transition: border-color 0.2s ease, box-shadow 0.3s ease;
+    }
+    .option-card:hover { border-color: var(--text-primary); box-shadow: var(--shadow-md); }
+    .option-card > *:not(.option-ghost) { position: relative; z-index: 2; }
+    .option-ghost {
+      position: absolute; top: 8px; right: 16px; line-height: 1;
+      font-size: clamp(70px, 8vw, 100px); font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(15, 23, 42, 0.05);
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .option-card.primary { border: 1.5px solid rgba(59, 126, 68, 0.4); }
+    .option-card.primary:hover { border-color: var(--green-text); box-shadow: 0 18px 44px -18px rgba(59, 126, 68, 0.25); }
+
+    .option-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .option-icon {
+      width: 54px; height: 54px; border-radius: 14px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); border: 1px solid rgba(103, 202, 77, 0.35);
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
+    }
+    .option-tag { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-text); display: block; margin-bottom: 3px; }
+    .option-head h2 { font-size: clamp(1.3rem, 1.8vw, 1.55rem); }
+    .option-p { color: var(--text-muted); font-size: 0.97rem; line-height: 1.65; margin-bottom: 20px; }
+
+    .option-highlights { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 24px; }
+    .highlight-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
+    .highlight-item svg { color: var(--green-text); flex-shrink: 0; }
+
+    .option-details {
+      margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border-color);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .option-details-lbl { font-size: 0.68rem; font-weight: 800; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px; }
+    .detail-row { display: flex; align-items: center; gap: 10px; font-size: 0.92rem; color: var(--text-primary); font-weight: 600; }
+    .detail-row svg { color: var(--green-text); flex-shrink: 0; }
+
+    /* ================= FORM ================= */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 0.72rem; font-weight: 800; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.06em; }
+    .field label b { color: var(--green-text); }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 11px 14px;
+      background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 8px;
+      color: var(--text-primary); font-family: var(--font-main); font-size: 0.93rem; line-height: 1.5;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #94A3B8; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; background: var(--bg-white); border-color: var(--green-text);
+      box-shadow: 0 0 0 3px rgba(59, 126, 68, 0.12);
+    }
+    .field textarea { resize: vertical; min-height: 96px; }
+    .field select { cursor: pointer; }
+
+    .form-success { display: flex; flex-direction: column; gap: 14px; padding: 8px 0; }
+    .success-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(103, 202, 77, 0.13); border: 1px solid rgba(103, 202, 77, 0.35);
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
+    }
+    .form-success h4 { font-size: 1.3rem; }
+    .form-success p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+    .form-success .btn { align-self: flex-start; margin-top: 6px; }
+
+    /* ================= EXPECT STEP CARDS (root-cause DNA) ================= */
     .card {
-      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 10px;
-      padding: 32px; transition: var(--transition); display: flex; flex-direction: column;
-      box-shadow: var(--shadow-sm); position: relative; z-index: 1;
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 14px;
+      padding: 32px; display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm); will-change: transform;
+      transform-style: preserve-3d;
+      transition: border-color 0.2s ease, box-shadow 0.3s ease;
     }
     .card:hover { border-color: var(--text-primary); box-shadow: var(--shadow-md); }
-
-    .card-visual-header {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
-    }
+    .card-visual-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
     .card-icon-box {
-      width: 44px; height: 44px; background: var(--bg-subtle); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; color: var(--accent-lime-dark);
+      width: 46px; height: 46px; background: var(--bg-subtle); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; color: var(--green-text);
       border: 1px solid var(--border-color);
+      transform: translateZ(44px); transition: transform 0.35s var(--ease-out);
     }
-    .card-num-tag { font-size: 0.8rem; font-weight: 800; color: var(--accent-lime-dark); letter-spacing: 0.05em; }
+    .card:hover .card-icon-box { transform: translateZ(56px) scale(1.06); }
+    .card-num {
+      width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(103, 202, 77, 0.13); color: var(--green-text);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.85rem; letter-spacing: 0.02em;
+    }
+    .card-title { margin-bottom: 10px; font-size: 1.2rem; font-weight: 800; }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 22px; max-width: none; }
 
-    .card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+    /* ================= FLOATING CTA ================= */
+    .floating-cta {
+      position: fixed; left: 22px; bottom: 22px; z-index: 1500;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--green-btn); color: #FFF; border: none; cursor: pointer;
+      font-family: var(--font-main); font-weight: 800; font-size: 0.9rem;
+      padding: 12px 22px; border-radius: 999px;
+      box-shadow: 0 10px 26px -8px rgba(103, 202, 77, 0.55);
+      transform: translateY(96px); opacity: 0;
+      transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out), background-color 0.2s ease;
+    }
+    .floating-cta.show { transform: none; opacity: 1; }
+    .floating-cta:hover { background: var(--green-btn-hover); }
+    .floating-cta svg { flex-shrink: 0; }
 
-    /* FOOTER */
-    .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 56px 0 28px; margin-top: auto; position: relative; z-index: 1; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 36px; }
-    .footer-brand p { color: var(--text-muted); margin-top: 12px; font-size: 0.9rem; max-width: 340px; }
-    .footer-heading { font-size: 0.82rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-link { color: var(--text-muted); font-size: 0.9rem; }
+    /* ================= FOOTER ================= */
+    .footer { background-color: var(--bg-white); border-top: 1px solid var(--border-color); padding: 64px 0 32px; margin-top: auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { color: var(--text-muted); margin-top: 14px; font-size: 0.92rem; max-width: 340px; }
+    .footer-heading { font-size: 0.8rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-link { color: var(--text-muted); font-size: 0.92rem; }
     .footer-link:hover { color: var(--text-primary); }
-    .footer-bottom { padding-top: 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.82rem; }
+    .footer-bottom { padding-top: 28px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-subtle); font-size: 0.84rem; }
 
-    /* EXIT INTENT POPUP MODAL */
+    /* ================= MODAL ================= */
     .modal-overlay {
-      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       z-index: 9999; display: none; opacity: 0; pointer-events: none; visibility: hidden;
       align-items: center; justify-content: center; padding: 20px; transition: opacity 0.25s ease;
     }
     .modal-overlay.active { display: flex; opacity: 1; pointer-events: auto; visibility: visible; }
     .modal-content {
-      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 12px;
-      width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto; position: relative;
-      box-shadow: var(--shadow-lg); padding: 28px;
+      background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 14px;
+      width: 100%; max-width: 740px; max-height: 90vh; overflow-y: auto; position: relative;
+      box-shadow: var(--shadow-lg); padding: 32px;
     }
     .modal-close {
-      position: absolute; top: 16px; right: 16px; background: var(--bg-subtle); border: none;
-      color: var(--text-primary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition);
+      position: absolute; top: 18px; right: 18px; background: var(--bg-subtle); border: none;
+      color: var(--text-primary); width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: var(--transition);
     }
     .modal-close:hover { background: var(--text-primary); color: #FFF; }
 
+    /* ================= REVEALS ================= */
+    html.js:not(.gsap-anim) .reveal {
+      opacity: 0; translate: 0 34px;
+      transition: opacity 0.7s var(--ease-out), translate 0.7s var(--ease-out);
+    }
+    html.js:not(.gsap-anim) .reveal.in-view { opacity: 1; translate: none; }
+    .gsap-anim .reveal { opacity: 0; transition: none; translate: none; }
+
+    @keyframes heroRise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes visualIn { from { opacity: 0; transform: translateY(36px) scale(0.97); } to { opacity: 1; transform: none; } }
+    html.js:not(.gsap-anim) .hero-content > * { animation: heroRise 0.7s var(--ease-out) both; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(2) { animation-delay: 0.07s; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(3) { animation-delay: 0.14s; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(4) { animation-delay: 0.21s; }
+    html.js:not(.gsap-anim) .hero-content > *:nth-child(5) { animation-delay: 0.28s; }
+    html.js:not(.gsap-anim) .hero-visual { animation: visualIn 0.9s 0.25s var(--ease-out) both; }
+
+    /* FOUC guard — GSAP reveals the console via fromTo with an explicit end state */
+    html.js .hero-visual { opacity: 0; }
+
+    /* ================= REDUCED MOTION ================= */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; translate: none !important; transition: none !important; }
+      .hero-content > *, .hero-visual { animation: none !important; }
+      html.js .hero-visual { opacity: 1 !important; }
+      .console-scroll { transform: none; }
+      .console-float, .chip-inner, .dot.dot-emerald { animation: none !important; }
+      .card-icon-box, .card:hover .card-icon-box { transform: none; }
+    }
+
+    /* ================= RESPONSIVE ================= */
     @media (max-width: 992px) {
+      .hero { padding: 56px 0 64px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+      .hero-visual { margin: 0 8px; }
+      .chip-a { right: 4px; top: -22px; }
+      .chip-b { left: 4px; }
       .nav-links, .nav-cta { display: none; }
       .mobile-toggle { display: block; }
       .nav-links.mobile-open {
-        display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; width: 100%;
+        display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; width: 100%;
         background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 24px; gap: 16px; box-shadow: var(--shadow-md);
       }
+      .options-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 800px) {
+      .section { padding: 80px 0; }
+      .option-card { padding: 28px 26px; }
+      .console-metric strong { font-size: 1.3rem; }
     }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .chip-b { display: none; }
+      .floating-cta { left: 14px; bottom: 14px; padding: 10px 16px; font-size: 0.84rem; }
+      .option-card { padding: 26px 22px; }
+      .console-row { grid-template-columns: 36px 1fr auto; gap: 10px; padding: 12px 12px; }
+      .row-text strong { font-size: 0.8rem; }
+      .console-metrics { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- INLINE HEADER NAVIGATION -->
-  <header class="navbar">
+  <div class="scroll-progress" aria-hidden="true"><span id="progress-fill"></span></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="site-navbar">
     <div class="container navbar-container">
       <a href="home.html" class="brand-logo" aria-label="OutPerform Institute Home">
         <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo" />
       </a>
+
       <nav>
         <ul class="nav-links" id="nav-menu">
           <li><a href="home.html" class="nav-link">Home</a></li>
@@ -192,93 +463,244 @@
           <li><a href="/blog" class="nav-link">Blog</a></li>
         </ul>
       </nav>
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.85rem;">Schedule Executive Briefing</button>
-        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">&#9776;</button>
+
+      <div class="nav-cta">
+        <button onclick="openBookingModal()" class="btn btn-accent">Book a Brief</button>
       </div>
+
+      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION WITH SUBTLE ANIMATED BACKGROUND -->
-    <section class="hero">
-      <div class="hero-bg-animation"></div>
+    <!-- ================= HERO + 3D DIRECT LINE CONSOLE ================= -->
+    <section class="hero" id="hero-section">
       <div class="container">
-        <div class="hero-content">
-          <span class="caps-label">Direct Communication</span>
-          
-          <h1 class="hero-title">
-            Connect With Our <span class="text-accent">Executive Practice</span>
-          </h1>
-          
-          <p class="hero-subtitle">
-            Whether you are ready for a Sales System Audit or have questions about embedded fractional leadership, we respond directly without corporate delay.
-          </p>
+        <div class="hero-grid">
+
+          <div class="hero-content">
+            <span class="caps-label">Direct Communication</span>
+
+            <h1 class="hero-title">
+              Connect with our<br>
+              <span class="text-accent">executive practice.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Whether you're ready for a Sales System Audit or have questions about embedded fractional leadership — we respond directly, without corporate delay.
+            </p>
+
+            <div class="hero-ctas">
+              <button onclick="openBookingModal()" class="btn btn-accent">Book a 15-Minute Brief</button>
+              <a href="#options" class="btn btn-secondary">Contact Options &darr;</a>
+            </div>
+
+            <div class="hero-trust-bar">
+              <div class="trust-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Response within 24 business hours</span>
+              </div>
+              <div class="trust-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>No gatekeepers — operator direct</span>
+              </div>
+              <div class="trust-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Live calendar, instant booking</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D DIRECT LINE CONSOLE -->
+          <div class="hero-visual">
+            <div class="console-scroll">
+              <div class="console-float">
+                <div class="console-3d" id="console3d">
+
+                  <div class="console-header" data-z="16">
+                    <div class="console-dots">
+                      <span class="dot dot-emerald"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                    </div>
+                    <div class="console-title-tag">Direct Line Console · Live</div>
+                  </div>
+
+                  <div class="console-body">
+                    <div class="console-channels">
+                      <div class="console-row" data-z="28">
+                        <span class="row-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </span>
+                        <span class="row-text">
+                          <small>Direct Line</small>
+                          <strong>+1 314 228 8473</strong>
+                        </span>
+                        <span class="row-badge live">Live</span>
+                      </div>
+
+                      <div class="console-row" data-z="28">
+                        <span class="row-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </span>
+                        <span class="row-text">
+                          <small>Executive Inbox</small>
+                          <strong>info@email.outperforminstitute.com</strong>
+                        </span>
+                        <span class="row-badge">&lt; 24h</span>
+                      </div>
+                    </div>
+
+                    <div class="console-metrics">
+                      <div class="console-metric" data-z="36">
+                        <small>Response Time</small>
+                        <strong>&lt; 24 h</strong>
+                        <em>business hours</em>
+                      </div>
+                      <div class="console-metric" data-z="36">
+                        <small>Calendar</small>
+                        <strong>Instant</strong>
+                        <em>live slot booking</em>
+                      </div>
+                    </div>
+
+                    <div class="console-strip" data-z="20">
+                      No gatekeepers. Your message reaches <span>the operator directly.</span>
+                    </div>
+                  </div>
+
+                  <div class="float-chip chip-a" aria-hidden="true">
+                    <div class="chip-inner">
+                      <span class="chip-icon">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
+                      <span class="chip-text">
+                        <strong>Slots open today</strong>
+                        <small>live calendar</small>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="float-chip chip-b" aria-hidden="true">
+                    <div class="chip-inner">
+                      <span class="chip-icon">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                      </span>
+                      <span class="chip-text">
+                        <strong>15-minute diagnostic</strong>
+                        <small>with Brian Taylor</small>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- CONTACT OPTIONS & PRIMARY CALL TO ACTION -->
-    <section class="section">
+    <!-- ================= CONTACT OPTIONS ================= -->
+    <section class="section" id="options">
       <div class="container">
-        <div class="grid-2" style="align-items: start;">
-          
-          <!-- PRIMARY ACTION VISUAL CARD: BOOK A CALL -->
-          <div class="card" style="border: 2px solid var(--accent-lime);">
-            <div class="card-visual-header">
-              <div class="card-icon-box">
+        <div class="section-header reveal">
+          <span class="caps-label">Two Ways to Reach Us</span>
+          <h2>Pick your channel.</h2>
+          <p class="lead">Booking a call is the fastest path. Writing works too — we respond to every message within one business day.</p>
+        </div>
+
+        <div class="options-grid">
+
+          <!-- PRIMARY: BOOK A CALL -->
+          <div class="option-card primary glare reveal" data-tilt="3">
+            <span class="option-ghost" aria-hidden="true">01</span>
+
+            <div class="option-head">
+              <div class="option-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </div>
-              <span class="card-num-tag">RECOMMENDED PRIMARY ACTION</span>
+              <div>
+                <span class="option-tag">Recommended · Fastest Path</span>
+                <h2>Schedule Executive Briefing</h2>
+              </div>
             </div>
 
-            <h2 style="font-size: 1.65rem; margin-bottom: 12px;">Schedule Executive Briefing</h2>
-            <p class="card-desc">
-              The fastest way to evaluate your sales system is a 15-minute diagnostic call with Brian Taylor. Select a time on our live calendar without back-and-forth emails.
+            <p class="option-p">
+              The fastest way to evaluate your sales system is a 15-minute diagnostic call with Brian Taylor. Select a time on the live calendar — no back-and-forth emails.
             </p>
-            <div style="margin-top: 10px;">
-              <button onclick="openBookingModal()" class="btn btn-accent btn-block">Schedule Executive Briefing</button>
+
+            <div class="option-highlights">
+              <div class="highlight-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>15-minute diagnostic with Brian Taylor</span>
+              </div>
+              <div class="highlight-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Review current team size &amp; deal velocity</span>
+              </div>
+              <div class="highlight-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Identify top 2–3 revenue leak locations</span>
+              </div>
+              <div class="highlight-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>No sales pitch · Zero obligation</span>
+              </div>
             </div>
 
-            <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-              <h4 style="font-size: 0.8rem; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Direct Contact Details</h4>
-              <p style="font-size: 0.92rem; color: var(--text-primary); margin-bottom: 6px;">
-                <strong>Email:</strong> info@email.outperforminstitute.com
-              </p>
-              <p style="font-size: 0.92rem; color: var(--text-primary);">
-                <strong>Direct Line:</strong> +1 314 228 8473
-              </p>
+            <div>
+              <button onclick="openBookingModal()" class="btn btn-accent btn-lg">Book Executive Briefing</button>
+            </div>
+
+            <div class="option-details">
+              <div class="option-details-lbl">Or reach us directly</div>
+              <div class="detail-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>info@email.outperforminstitute.com</span>
+              </div>
+              <div class="detail-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+1 314 228 8473</span>
+              </div>
             </div>
           </div>
 
-          <!-- SECONDARY INQUIRY FORM VISUAL CARD -->
-          <div class="card">
-            <div class="card-visual-header">
-              <div class="card-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <!-- SECONDARY: MESSAGE FORM (no tilt — typing stability) -->
+          <div class="option-card glare reveal">
+            <span class="option-ghost" aria-hidden="true">02</span>
+
+            <div class="option-head">
+              <div class="option-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </div>
-              <span class="card-num-tag">SECONDARY OPTION</span>
+              <div>
+                <span class="option-tag">Secondary Option</span>
+                <h2>Send a Direct Message</h2>
+              </div>
             </div>
 
-            <h2 style="font-size: 1.65rem; margin-bottom: 12px;">Send a Direct Message</h2>
-            <p class="card-desc">
-              Prefer to send a brief written inquiry first? Submit your details below and our operating team will respond within 24 business hours.
+            <p class="option-p">
+              Prefer to write first? Submit your details below and our operating team responds within 24 business hours.
             </p>
 
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you. Your message has been sent. We recommend booking a call for faster evaluation.');" style="display: flex; flex-direction: column; gap: 14px; margin-top: 6px;">
-              <div>
-                <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-subtle); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Your Full Name *</label>
-                <input type="text" required placeholder="e.g. John Smith" style="width: 100%; padding: 10px 14px; background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-size: 0.92rem;">
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="field">
+                <label for="f-name">Your Full Name <b>*</b></label>
+                <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="e.g. John Smith">
               </div>
 
-              <div>
-                <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-subtle); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Work Email Address *</label>
-                <input type="email" required placeholder="e.g. john@company.com" style="width: 100%; padding: 10px 14px; background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-size: 0.92rem;">
+              <div class="field">
+                <label for="f-email">Work Email Address <b>*</b></label>
+                <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="e.g. john@company.com">
               </div>
 
-              <div>
-                <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-subtle); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Company ARR Range</label>
-                <select style="width: 100%; padding: 10px 14px; background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-size: 0.92rem;">
+              <div class="field">
+                <label for="f-arr">Company ARR Range</label>
+                <select id="f-arr" name="arr">
                   <option value="10-25">$10M – $25M ARR</option>
                   <option value="25-50">$25M – $50M ARR</option>
                   <option value="50-75">$50M – $75M ARR</option>
@@ -286,31 +708,84 @@
                 </select>
               </div>
 
-              <div>
-                <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-subtle); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Message / Inquiry Details *</label>
-                <textarea required rows="3" placeholder="Describe your current sales team size and operating bottlenecks..." style="width: 100%; padding: 10px 14px; background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-size: 0.92rem; resize: vertical;"></textarea>
+              <div class="field">
+                <label for="f-msg">Message / Inquiry Details <b>*</b></label>
+                <textarea id="f-msg" name="message" required rows="4" placeholder="Describe your current sales team size and operating bottlenecks…"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-secondary btn-block">Submit Written Message</button>
+              <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
+
+            <div class="form-success" id="form-success" hidden>
+              <div class="success-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h4>Message received.</h4>
+              <p>We'll respond within 24 business hours. Want answers faster?</p>
+              <button onclick="openBookingModal()" class="btn btn-accent">Book a 15-Minute Brief</button>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
+
+    <!-- ================= WHAT TO EXPECT ================= -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="caps-label">After You Book</span>
+          <h2>What happens on the call.</h2>
+          <p class="lead">A structured fifteen minutes — no pitch theater. Here's the exact sequence.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card glare reveal" data-tilt="6">
+            <div class="card-visual-header">
+              <div class="card-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <span class="card-num">01</span>
+            </div>
+            <h3 class="card-title">Pick your slot</h3>
+            <p class="card-desc">Choose a time on the live calendar. No back-and-forth, no gatekeepers — the slot is yours the moment you book.</p>
+          </div>
+
+          <div class="card glare reveal" data-tilt="6">
+            <div class="card-visual-header">
+              <div class="card-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <span class="card-num">02</span>
+            </div>
+            <h3 class="card-title">15-minute diagnostic</h3>
+            <p class="card-desc">Brian joins the call and evaluates your current sales structure live — stages, cadence, and forecast discipline.</p>
+          </div>
+
+          <div class="card glare reveal" data-tilt="6">
+            <div class="card-visual-header">
+              <div class="card-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <span class="card-num">03</span>
+            </div>
+            <h3 class="card-title">Leave with specifics</h3>
+            <p class="card-desc">You'll leave with two or three specific places your system leaks revenue — whether we work together or not.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- INLINE FOOTER -->
+  <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <a href="home.html" class="brand-logo" style="margin-bottom: 16px; display: inline-block;">
-            <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute">
+        <div class="footer-brand">
+          <a href="home.html" class="brand-logo">
+            <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo" />
           </a>
-          <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 320px; line-height: 1.6;">
-            Fractional sales leadership for B2B tech and service founders scaling past $1M+ ARR without headcount waste.
-          </p>
+          <p>Fractional sales leadership for B2B SaaS &amp; IT founders. Structure over motivation. Systems over heroics.</p>
         </div>
 
         <div>
@@ -339,8 +814,8 @@
           <ul class="footer-links">
             <li class="footer-link">info@email.outperforminstitute.com</li>
             <li class="footer-link">+1 314 228 8473</li>
-            <li style="margin-top: 10px;">
-              <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 16px; font-size: 0.82rem;">Book Executive Brief</button>
+            <li style="margin-top: 12px;">
+              <button onclick="openBookingModal()" class="btn btn-accent" style="padding: 8px 18px; font-size: 0.84rem;">Book a Brief</button>
             </li>
           </ul>
         </div>
@@ -353,14 +828,20 @@
     </div>
   </footer>
 
-  <!-- EXIT INTENT POPUP MODAL -->
+  <!-- ================= FLOATING BOOK-A-CALL ================= -->
+  <button class="floating-cta" id="floating-cta" onclick="openBookingModal()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a Call
+  </button>
+
+  <!-- ================= BOOKING MODAL ================= -->
   <div class="modal-overlay" id="exit-intent-modal" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" onclick="closeBookingModal()" aria-label="Close modal">&times;</button>
-      <div style="margin-bottom: 16px;">
-        <span class="caps-label">Executive Briefing</span>
-        <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Schedule Your Sales System Audit</h3>
-        <p style="color: var(--text-muted); font-size: 0.92rem;">Select a time for a 15-minute diagnostic call on your sales operating structure.</p>
+      <div style="margin-bottom: 20px;">
+        <span class="caps-label">Executive Brief</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Book a 15-Minute Brief</h3>
+        <p style="color: var(--text-muted); font-size: 0.94rem;">Pick a time for your sales-structure diagnostic call.</p>
       </div>
       <div>
         <iframe src="https://api.revenuelab360.com/widget/booking/7Q047XwldSbfTEI5mRJY" allow="payment" style="width: 100%; border:none; overflow: hidden; min-height: 500px;" scrolling="no" id="7Q047XwldSbfTEI5mRJY_modal"></iframe>
@@ -369,70 +850,252 @@
     </div>
   </div>
 
-  <!-- LEAD CONNECTOR SITE-WIDE CHAT WIDGET -->
+  <!-- CHAT WIDGET -->
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b86e7826d17f8cad31721e"></script>
 
-  <!-- INLINE INTERACTIVE JAVASCRIPT ENGINE -->
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    // GLOBAL MODAL CONTROLLERS
-    window.openBookingModal = function() {
-      const modal = document.getElementById("exit-intent-modal");
-      if (modal) {
-        modal.style.display = "flex";
-        setTimeout(() => {
-          modal.classList.add("active");
-          modal.setAttribute("aria-hidden", "false");
-        }, 10);
-      }
-    };
+    if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("gsap-anim");
+    }
+  </script>
 
-    window.closeBookingModal = function() {
-      const modal = document.getElementById("exit-intent-modal");
-      if (modal) {
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-        setTimeout(() => {
-          modal.style.display = "none";
-        }, 200);
-      }
+  <script>
+    /* ============ MODAL CONTROLLERS ============ */
+    window.openBookingModal = function () {
+      const m = document.getElementById("exit-intent-modal");
+      if (m) { m.style.display = "flex"; setTimeout(() => { m.classList.add("active"); m.setAttribute("aria-hidden", "false"); }, 10); }
+    };
+    window.closeBookingModal = function () {
+      const m = document.getElementById("exit-intent-modal");
+      if (m) { m.classList.remove("active"); m.setAttribute("aria-hidden", "true"); setTimeout(() => { m.style.display = "none"; }, 200); }
     };
 
     document.addEventListener("DOMContentLoaded", function () {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const finePointer = window.matchMedia("(pointer: fine)").matches;
+      const anim = document.documentElement.classList.contains("gsap-anim");
+      if (anim && window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ ignoreMobileResize: true });
+      }
+
+      /* ============ MOBILE NAV ============ */
       const toggleBtn = document.getElementById("mobile-toggle-btn");
       const navMenu = document.getElementById("nav-menu");
-      if (toggleBtn && navMenu) {
-        toggleBtn.addEventListener("click", function () {
-          navMenu.classList.toggle("mobile-open");
+      if (toggleBtn && navMenu) toggleBtn.addEventListener("click", () => navMenu.classList.toggle("mobile-open"));
+
+      /* ============ PROGRESS BAR + NAVBAR + FLOATING CTA ============ */
+      const progressFill = document.getElementById("progress-fill");
+      const navbar = document.getElementById("site-navbar");
+      const floatingCta = document.getElementById("floating-cta");
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const top = window.scrollY || document.documentElement.scrollTop;
+          const full = document.documentElement.scrollHeight - window.innerHeight;
+          if (progressFill) progressFill.style.width = (full > 0 ? (top / full) * 100 : 0) + "%";
+          if (navbar) navbar.classList.toggle("scrolled", top > 10);
+          if (floatingCta) floatingCta.classList.toggle("show", top > 480);
+          ticking = false;
+        });
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      /* ============ GLARE ============ */
+      if (finePointer && !reduced) {
+        document.querySelectorAll(".glare").forEach(el => {
+          el.addEventListener("pointermove", e => {
+            const r = el.getBoundingClientRect();
+            el.style.setProperty("--gx", (((e.clientX - r.left) / r.width) * 100).toFixed(1) + "%");
+            el.style.setProperty("--gy", (((e.clientY - r.top) / r.height) * 100).toFixed(1) + "%");
+            el.style.setProperty("--go", "1");
+          });
+          el.addEventListener("pointerleave", () => el.style.setProperty("--go", "0"));
         });
       }
 
-      // EXIT INTENT DETECTION
-      let exitTriggered = false;
-      document.addEventListener("mouseleave", function (e) {
-        if ((e.clientY <= 12 || e.clientY === undefined) && !exitTriggered) {
-          exitTriggered = true;
-          openBookingModal();
+      /* ============ SMOOTH 3D TILT (book card + expect cards; NOT the form) ============ */
+      const tiltEls = [];
+      if (finePointer && !reduced) {
+        document.querySelectorAll("[data-tilt]").forEach(el => {
+          const t = { el, max: parseFloat(el.getAttribute("data-tilt")) || 6, tx: 0, ty: 0, cx: 0, cy: 0, lift: 0, targetLift: 0 };
+          el.addEventListener("pointermove", e => {
+            const r = el.getBoundingClientRect();
+            t.tx = (((e.clientX - r.left) / r.width) - 0.5) * 2;
+            t.ty = (((e.clientY - r.top) / r.height) - 0.5) * 2;
+            t.targetLift = 1;
+          });
+          el.addEventListener("pointerleave", () => { t.tx = 0; t.ty = 0; t.targetLift = 0; });
+          tiltEls.push(t);
+        });
+      }
+      const tiltLoop = () => {
+        tiltEls.forEach(t => {
+          t.cx += (t.tx - t.cx) * 0.11;
+          t.cy += (t.ty - t.cy) * 0.11;
+          t.lift += (t.targetLift - t.lift) * 0.11;
+          const idle = !t.targetLift && Math.abs(t.cx) < 0.003 && Math.abs(t.cy) < 0.003 && t.lift < 0.004;
+          if (idle) { if (t.el.style.transform) t.el.style.transform = ""; return; }
+          t.el.style.transform =
+            "perspective(1000px) rotateX(" + (-t.cy * t.max).toFixed(2) + "deg) " +
+            "rotateY(" + (t.cx * t.max).toFixed(2) + "deg) " +
+            "translateY(" + (-t.lift * 7).toFixed(2) + "px) " +
+            "scale(" + (1 + t.lift * 0.018).toFixed(3) + ")";
+        });
+        requestAnimationFrame(tiltLoop);
+      };
+      if (tiltEls.length) requestAnimationFrame(tiltLoop);
+
+      /* ============ FORM: inline success (no alert()) ============ */
+      const form = document.getElementById("contact-form");
+      const success = document.getElementById("form-success");
+      if (form && success) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) { form.reportValidity(); return; }
+          const show = () => {
+            form.style.display = "none";
+            success.hidden = false;
+            if (anim && window.gsap) {
+              gsap.fromTo(success, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" });
+            }
+          };
+          if (anim && window.gsap) {
+            gsap.to(form, { autoAlpha: 0, y: -10, duration: 0.3, ease: "power2.in", onComplete: show });
+          } else {
+            show();
+          }
+        });
+      }
+
+      /* ============ FALLBACKS ============ */
+      const fallbackReveals = () => {
+        const els = document.querySelectorAll(".reveal");
+        if (reduced || !("IntersectionObserver" in window)) { els.forEach(el => el.classList.add("in-view")); return; }
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in-view"); io.unobserve(en.target); } });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        els.forEach(el => io.observe(el));
+      };
+
+      /* ============ GSAP ============ */
+      if (anim && window.gsap && window.ScrollTrigger) {
+        try {
+          /* --- Console cascade: own the poses FIRST (set → to; explicit z
+                 from data-z so CSS depths are preserved, no opacity, no
+                 local perspective) — the Services-page fix pattern --- */
+          const casc = gsap.utils.toArray("#console3d [data-z]");
+          casc.forEach(el => {
+            gsap.set(el, { z: parseFloat(el.dataset.z) || 0, y: 30, rotateX: 8 });
+          });
+
+          /* --- Hero entrance (console revealed as ONE block via fromTo;
+                 FOUC guard pre-hides it from first paint) --- */
+          gsap.timeline({ defaults: { ease: "power3.out" } })
+            .from(".hero-content .caps-label", { y: 24, autoAlpha: 0, duration: 0.65 }, 0.05)
+            .from(".hero-title", { y: 34, autoAlpha: 0, duration: 0.9 }, 0.15)
+            .from(".hero-subtitle", { y: 28, autoAlpha: 0, duration: 0.8 }, 0.3)
+            .from(".hero-ctas", { y: 24, autoAlpha: 0, duration: 0.75 }, 0.42)
+            .from(".hero-trust-bar", { y: 20, autoAlpha: 0, duration: 0.75 }, 0.54)
+            .fromTo(".hero-visual",
+              { y: 64, autoAlpha: 0, scale: 0.96 },
+              { y: 0, autoAlpha: 1, scale: 1, duration: 1.1 }, 0.25);
+
+          /* --- Console elements cascade into place after it lands --- */
+          gsap.to(casc, {
+            y: 0, rotateX: 0,
+            stagger: 0.08, duration: 0.7, ease: "power3.out", delay: 0.85
+          });
+
+          /* --- Console rotates away as you scroll out of the hero --- */
+          gsap.to(".console-scroll", {
+            rotateX: -8, rotateY: 13, y: -80, scale: 0.94, ease: "none",
+            scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom 25%", scrub: 0.7 }
+          });
+
+          /* --- Cursor tilt on the console (spring-smoothed quickTo) --- */
+          if (finePointer) {
+            const heroSection = document.getElementById("hero-section");
+            const consoleTilt = document.getElementById("console3d");
+            if (heroSection && consoleTilt) {
+              const qRX = gsap.quickTo(consoleTilt, "rotateX", { duration: 0.8, ease: "power3" });
+              const qRY = gsap.quickTo(consoleTilt, "rotateY", { duration: 0.8, ease: "power3" });
+              heroSection.addEventListener("pointermove", e => {
+                qRY((e.clientX / window.innerWidth - 0.5) * 9);
+                qRX((0.5 - e.clientY / window.innerHeight) * 7);
+              });
+              heroSection.addEventListener("pointerleave", () => { qRX(0); qRY(0); });
+            }
+          }
+
+          /* --- Reveals --- */
+          gsap.utils.toArray(".reveal").forEach(el => {
+            const sibs = el.parentElement ? Array.from(el.parentElement.children).filter(c => c.classList.contains("reveal")) : [];
+            const idx = sibs.indexOf(el);
+            gsap.fromTo(el,
+              { opacity: 0, y: 44 },
+              { opacity: 1, y: 0, duration: 0.95, ease: "power3.out",
+                delay: idx > 0 ? Math.min(idx * 0.1, 0.25) : 0,
+                scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+          });
+
+          /* --- Parallax drift on option ghost numbers --- */
+          gsap.utils.toArray(".option-ghost").forEach(ghost => {
+            gsap.fromTo(ghost, { y: 36 }, {
+              y: -36, ease: "none",
+              scrollTrigger: { trigger: ghost.parentElement, start: "top bottom", end: "bottom top", scrub: 0.6 }
+            });
+          });
+
+          window.addEventListener("load", () => ScrollTrigger.refresh());
+
+        } catch (err) {
+          /* GSAP failed mid-flight → strip all inline states; removing
+             gsap-anim re-activates the CSS fallback animations */
+          document.documentElement.classList.remove("gsap-anim");
+          gsap.set(".reveal, .hero-visual, #console3d [data-z]", { clearProps: "all" });
+          fallbackReveals();
         }
+      } else {
+        fallbackReveals();
+      }
+
+      /* ============ EXIT INTENT (fixed version) ============ */
+      let lastExitFire = 0;
+      const modalEl = document.getElementById("exit-intent-modal");
+      const modalIsOpen = () => !!(modalEl && modalEl.classList.contains("active"));
+      const fireExitIntent = () => {
+        const now = Date.now();
+        if (modalIsOpen() || now - lastExitFire < 15000) return;
+        lastExitFire = now;
+        openBookingModal();
+      };
+      document.addEventListener("mouseout", function (e) {
+        if (!e.relatedTarget && !e.toElement && e.clientY <= 12) fireExitIntent();
       });
 
-      // MOBILE SCROLL EXIT TRIGGER
-      let scrollTriggered = false;
+      let mobileScrollFired = false;
       window.addEventListener("scroll", function () {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (docHeight > 0 && scrollTop / docHeight > 0.7 && !scrollTriggered && window.innerWidth <= 768) {
-          scrollTriggered = true;
-          openBookingModal();
+        if (mobileScrollFired) return;
+        const top = window.pageYOffset || document.documentElement.scrollTop;
+        const full = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (window.innerWidth <= 768 && full > 0 && top / full > 0.7) {
+          mobileScrollFired = true;
+          fireExitIntent();
         }
-      });
+      }, { passive: true });
 
-      // MODAL BACKGROUND CLICK TO CLOSE
-      document.addEventListener("click", function (e) {
-        const modal = document.getElementById("exit-intent-modal");
-        if (e.target === modal) {
-          closeBookingModal();
-        }
+      /* ============ MODAL: CLICK OUTSIDE + ESC ============ */
+      document.addEventListener("click", e => {
+        if (e.target === modalEl) closeBookingModal();
       });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") closeBookingModal(); });
     });
   </script>
 </body>

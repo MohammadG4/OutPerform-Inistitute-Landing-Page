@@ -1,70 +1,89 @@
 <style>
+  /* ================= DESIGN SYSTEM TOKENS FOR NAVBAR ================= */
   :root {
-    --bg-white: #FFFFFF;
     --bg-light: #F8FAFC;
+    --bg-white: #FFFFFF;
+    --bg-subtle: #F1F5F9;
     --border-color: #E2E8F0;
     --text-primary: #0F172A;
     --text-muted: #475569;
-    --accent-lime: #32CD32;
+    --text-subtle: #64748B;
+    --green-text: rgb(59, 126, 68);
+    --green-btn: rgb(103, 202, 77);
+    --green-btn-hover: rgb(84, 176, 58);
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --container-max: 1200px;
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --transition: all 0.2s ease-in-out;
   }
+
+  .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 13px 26px; font-weight: 700; font-size: 0.95rem; border-radius: 8px;
+    cursor: pointer; transition: var(--transition); border: 1.5px solid transparent;
+    white-space: nowrap; user-select: none;
+  }
+  .btn-accent { background-color: var(--green-btn); color: #FFF; border-color: var(--green-btn); box-shadow: 0 4px 14px rgba(103, 202, 77, 0.35); }
+  .btn-accent:hover { background-color: var(--green-btn-hover); border-color: var(--green-btn-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(103, 202, 77, 0.45); }
+
+  /* ================= NAVBAR ================= */
   .navbar {
-    position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-color); height: 72px; display: flex; align-items: center;
-    font-family: var(--font-main); width: 100%;
+    position: sticky; top: 0; z-index: 1000; background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color); height: 74px; display: flex; align-items: center;
+    transition: box-shadow 0.3s ease; font-family: var(--font-main); width: 100%;
   }
-  .navbar-container {
-    width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  .navbar.scrolled { box-shadow: 0 6px 24px -12px rgba(15, 23, 42, 0.18); }
+  .navbar-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
   .brand-logo img { height: 34px; width: auto; display: block; }
-  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; padding: 0; }
-  .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 0; transition: color 0.2s ease; }
-  .nav-link:hover, .nav-link.active { color: var(--text-primary); }
-  .nav-cta { display: flex; align-items: center; gap: 12px; }
-  .btn-accent {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 8px 18px; font-weight: 700; font-size: 0.85rem; border-radius: 6px;
-    cursor: pointer; transition: all 0.2s ease; border: 1.5px solid #32CD32;
-    background-color: #32CD32; color: #000000; text-decoration: none;
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .nav-link { font-size: 0.92rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 0; position: relative; }
+  .nav-link::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%;
+    background: var(--green-btn); border-radius: 2px;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
   }
-  .btn-accent:hover { background-color: #0F172A; color: #FFFFFF; border-color: #0F172A; }
-  .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none; position: absolute; top: 72px; left: 0; right: 0;
-      background: var(--bg-white); flex-direction: column; padding: 20px;
-      border-bottom: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .nav-links.mobile-open { display: flex; }
+  .nav-link:hover, .nav-link.active { color: var(--text-primary); }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+  .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); cursor: pointer; }
+
+  @media (max-width: 992px) {
+    .nav-links, .nav-cta { display: none; }
     .mobile-toggle { display: block; }
+    .nav-links.mobile-open {
+      display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; width: 100%;
+      background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 24px; gap: 16px; box-shadow: var(--shadow-md);
+    }
   }
 </style>
 
-<header class="navbar">
-  <div class="navbar-container">
+<!-- NAVBAR -->
+<header class="navbar" id="site-navbar">
+  <div class="container navbar-container">
     <a href="home.html" class="brand-logo" aria-label="OutPerform Institute Home">
       <img src="https://assets.cdn.filesafe.space/Ij1AeSf44iidSOUYTiDZ/media/69b1cedd8d3eae7c26247ab7.png" alt="OutPerform Institute Logo" />
     </a>
-    
+
     <nav>
       <ul class="nav-links" id="nav-menu">
-        <li><a href="home.html" class="nav-link" data-page="home.html">Home</a></li>
-        <li><a href="Services.html" class="nav-link" data-page="services.html">Services</a></li>
-        <li><a href="About Us .html" class="nav-link" data-page="about us .html">About Us</a></li>
-        <li><a href="Booking.html" class="nav-link" data-page="booking.html">Booking</a></li>
-        <li><a href="Contact.html" class="nav-link" data-page="contact.html">Contact Us</a></li>
+        <li><a href="home.html" class="nav-link active">Home</a></li>
+        <li><a href="Services.html" class="nav-link">Services</a></li>
+        <li><a href="About Us .html" class="nav-link">About Us</a></li>
+        <li><a href="Booking.html" class="nav-link">Booking</a></li>
+        <li><a href="Contact.html" class="nav-link">Contact Us</a></li>
         <li><a href="/blog" class="nav-link">Blog</a></li>
       </ul>
     </nav>
 
     <div class="nav-cta">
-      <button onclick="typeof openBookingModal === 'function' ? openBookingModal() : location.href='Booking.html'" class="btn-accent">Book a Call</button>
-      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+      <button onclick="typeof openBookingModal === 'function' ? openBookingModal() : (window.location.href='Booking.html')" class="btn btn-accent">Book a Brief</button>
     </div>
+
+    <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
   </div>
 </header>
 
@@ -76,6 +95,16 @@
       toggleBtn.addEventListener("click", function() {
         navMenu.classList.toggle("mobile-open");
       });
+    }
+
+    const navbar = document.getElementById("site-navbar");
+    if (navbar) {
+      const onScroll = function() {
+        const top = window.scrollY || document.documentElement.scrollTop;
+        navbar.classList.toggle("scrolled", top > 10);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
     }
   })();
 </script>
